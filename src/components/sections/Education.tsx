@@ -1,125 +1,56 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, GraduationCap, Code, Trophy } from 'lucide-react';
 
 export function Education() {
-  const achievements = [
+  const history = [
     {
-      icon: GraduationCap,
       title: 'Bachelor of Computer Science',
-      subtitle: 'ABES Engineering College',
-      year: 'Pre-final year',
-      description: 'Specializing in Web Development, Data Structures, and AI/ML with focus on building scalable applications.',
-      color: 'from-blue-500 to-cyan-500',
+      institution: 'ABES Engineering College',
+      period: '2022 - 2026',
+      description: 'Major in Computer Science. Specialized in AI/ML and Data Structures.',
     },
     {
-      icon: Code,
       title: 'Problem Solving Champion',
-      subtitle: 'LeetCode • GeeksforGeeks • HackerRank',
-      year: '200+ Problems Solved',
-      description: 'Demonstrated strong algorithmic thinking and consistency in competitive programming across multiple platforms.',
-      color: 'from-green-500 to-emerald-500',
+      institution: 'LeetCode / GFG',
+      period: 'Ongoing',
+      description: 'Solved 200+ problems across various platforms. 3-star rating on CodeChef.',
     },
     {
-      icon: Trophy,
-      title: 'Hackathon Winner',
-      subtitle: 'Shiv Nadar University Hackathon',
-      year: '3rd Place',
-      description: 'Secured 3rd place by building an innovative web application with a team in 36 hours under time pressure.',
-      color: 'from-purple-500 to-pink-500',
-    },
-    {
-      icon: Award,
-      title: 'Tech Excellence',
-      subtitle: 'Full-Stack Development',
-      year: '15+ Projects',
-      description: 'Created diverse projects spanning AI, backend optimization, and modern frontend frameworks.',
-      color: 'from-orange-500 to-red-500',
-    },
+      title: 'Hackathon Achievements',
+      institution: 'Various',
+      period: '2023 - 2024',
+      description: 'Won 3rd place at Shiv Nadar University Hackathon. Finalist in Smart India Hackathon internal rounds.',
+    }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   return (
-    <section className="section bg-gradient-to-b from-transparent via-green-50/20 to-transparent dark:via-green-900/10">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="section-title">Education & Achievements</h2>
-          <p className="section-subtitle">
-            My journey through education, problem-solving, and professional accomplishments.
-          </p>
-        </motion.div>
+    <section className="py-24 border-t border-border" id="education">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="md:col-span-1">
+          <span className="text-sm font-mono text-muted tracking-widest uppercase sticky top-24">
+            (05) Education
+          </span>
+        </div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {achievements.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="group relative"
-              >
-                <div className="h-full rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 p-6 flex flex-col">
-                  {/* Top gradient bar */}
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${item.color}`}></div>
-
-                  {/* Icon */}
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                    <Icon className="h-6 w-6 text-white" />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-1">
-                    {item.subtitle}
-                  </p>
-
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 font-medium uppercase tracking-wide">
-                    {item.year}
-                  </p>
-
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed flex-grow">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        <div className="md:col-span-3 space-y-12">
+          {history.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="flex flex-col md:flex-row gap-4 md:gap-12 md:items-baseline"
+            >
+              <span className="text-sm font-mono text-muted w-32 shrink-0">{item.period}</span>
+              <div>
+                <h3 className="text-lg font-bold text-foreground">{item.title}</h3>
+                <p className="text-muted text-sm mb-2">{item.institution}</p>
+                <p className="text-muted text-sm max-w-lg leading-relaxed">{item.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
