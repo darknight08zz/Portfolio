@@ -40,7 +40,7 @@ export function About() {
                 scalable web applications and exploring the frontiers of Artificial Intelligence.
               </p>
               <p>
-                Currently in my pre-final year at <strong className="text-foreground">ABES Engineering College</strong>,
+                Currently in my pre-final year at <strong className="text-foreground">XIM University</strong>,
                 I specialize in full-stack development using the MERN stack and Next.js, while simultaneously
                 deepening my understanding of Data Structures and Algorithms. I believe that great software
                 is not just about writing code—it's about solving real-world problems with elegance and efficiency.

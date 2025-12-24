@@ -6,8 +6,8 @@ export function Education() {
   const history = [
     {
       title: 'Bachelor of Computer Science',
-      institution: 'ABES Engineering College',
-      period: '2022 - 2026',
+      institution: 'XIM University',
+      period: '2023 - 2027',
       description: 'Major in Computer Science. Specialized in AI/ML and Data Structures.',
     },
     {
