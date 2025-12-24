@@ -44,7 +44,7 @@ const projects = [
 
 export function ProjectsList() {
   return (
-    <section className="section bg-gradient-to-b from-transparent via-blue-50/20 to-transparent dark:via-blue-900/10">
+    <section className="section">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
