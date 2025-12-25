@@ -1,13 +1,38 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { FloatingSkillsCloud } from '@/components/ui/FloatingSkillsCloud';
 
 export function Skills() {
   const stack = {
-    'Frontend': ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
-    'Backend': ['Node.js', 'Express', 'Python', 'PostgreSQL', 'MongoDB'],
-    'AI / Data': ['TensorFlow', 'OpenCV', 'Pandas', 'NumPy', 'Scikit-Learn'],
-    'Tools': ['Git', 'Docker', 'Linux', 'VS Code', 'Figma']
+    'Frontend': [
+      { name: 'React', icon: 'https://skillicons.dev/icons?i=react' },
+      { name: 'Next.js', icon: 'https://skillicons.dev/icons?i=nextjs' },
+      { name: 'TypeScript', icon: 'https://skillicons.dev/icons?i=ts' },
+      { name: 'Tailwind', icon: 'https://skillicons.dev/icons?i=tailwind' },
+      { name: 'Framer Motion', icon: 'https://skillicons.dev/icons?i=motion' },
+    ],
+    'Backend': [
+      { name: 'Node.js', icon: 'https://skillicons.dev/icons?i=nodejs' },
+      { name: 'Express', icon: 'https://skillicons.dev/icons?i=express' },
+      { name: 'Python', icon: 'https://skillicons.dev/icons?i=py' },
+      { name: 'PostgreSQL', icon: 'https://skillicons.dev/icons?i=postgres' },
+      { name: 'MongoDB', icon: 'https://skillicons.dev/icons?i=mongo' },
+    ],
+    'AI / Data': [
+      { name: 'TensorFlow', icon: 'https://skillicons.dev/icons?i=tensorflow' },
+      { name: 'OpenCV', icon: 'https://skillicons.dev/icons?i=opencv' },
+      { name: 'Pandas', icon: 'https://skillicons.dev/icons?i=pandas' },
+      { name: 'NumPy', icon: 'https://skillicons.dev/icons?i=numpy' },
+      { name: 'Scikit-Learn', icon: 'https://skillicons.dev/icons?i=sklearn' },
+    ],
+    'Tools': [
+      { name: 'Git', icon: 'https://skillicons.dev/icons?i=git' },
+      { name: 'Docker', icon: 'https://skillicons.dev/icons?i=docker' },
+      { name: 'Linux', icon: 'https://skillicons.dev/icons?i=linux' },
+      { name: 'VS Code', icon: 'https://skillicons.dev/icons?i=vscode' },
+      { name: 'Figma', icon: 'https://skillicons.dev/icons?i=figma' },
+    ]
   };
 
   return (
@@ -20,27 +45,23 @@ export function Skills() {
         </div>
 
         <div className="md:col-span-3">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-            {Object.entries(stack).map(([category, items], i) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <h3 className="text-lg font-bold mb-6 text-foreground border-b border-border pb-2">
-                  {category}
-                </h3>
-                <ul className="space-y-3">
-                  {items.map((item) => (
-                    <li key={item} className="text-muted hover:text-foreground transition-colors font-mono text-sm">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
+          {Object.entries(stack).map(([category, items], i) => (
+            <motion.div
+              key={category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="mb-12 last:mb-0"
+            >
+              <h3 className="text-lg font-bold mb-6 text-foreground border-b border-border pb-2 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary/60" />
+                {category}
+              </h3>
+
+              <FloatingSkillsCloud skills={items} />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
