@@ -30,7 +30,7 @@ export default function RootLayout({
             <div className="fixed inset-0 z-0 pointer-events-none opacity-0 dark:opacity-100 transition-opacity duration-500 bg-ambient-glow mix-blend-screen" />
 
             {/* Left Sidebar */}
-            <div className="flex-none md:w-64 z-10">
+            <div className="flex-none md:w-64 z-50">
               <Sidebar />
             </div>
 
