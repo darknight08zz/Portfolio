@@ -36,6 +36,15 @@ export const Sidebar = () => {
                 </button>
             </div>
 
+            {/* Backdrop for Mobile Menu */}
+            {isOpen && (
+                <div
+                    className="fixed inset-0 z-30 bg-background/20 backdrop-blur-sm md:hidden"
+                    onClick={() => setIsOpen(false)}
+                    aria-hidden="true"
+                />
+            )}
+
             {/* Sidebar Container */}
             <aside className={`
         fixed top-0 left-0 z-40 h-full w-full md:w-64 bg-background border-r border-border transition-transform duration-300 ease-in-out
