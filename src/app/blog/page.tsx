@@ -36,8 +36,8 @@ export default function BlogPage() {
       <div className="flex items-center justify-between mb-12">
         <h2 className="text-3xl font-bold">Tech Blog</h2>
         <div className="flex gap-4">
-          <Link href="/admin/write" className="text-sm font-medium hover:text-blue-600 transition-colors">
-            + Write Post
+          <Link href="/admin" className="text-sm font-medium hover:text-blue-600 transition-colors">
+            Admin Dashboard
           </Link>
           <Link href="/rss" className="text-muted text-sm hover:text-foreground hidden">
             RSS

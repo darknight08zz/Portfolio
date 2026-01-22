@@ -21,7 +21,7 @@ function WriteBlogContent() {
     const [isEditing, setIsEditing] = useState(false);
 
     // Simple hardcoded PIN
-    const ADMIN_PIN = '1234';
+    const ADMIN_PIN = '151723114010843';
 
     useEffect(() => {
         // If PIN is already entered (simulated session or just re-entry), potentially skip?
