@@ -76,8 +76,9 @@ export const Sidebar = () => {
                     <nav className="flex-1 space-y-1">
                         <NavItem href="/" label="Home" number="(01)" />
                         <NavItem href="/projects" label="Projects" number="(02)" />
-                        <NavItem href="/about" label="About" number="(03)" />
-                        <NavItem href="/contact" label="Contact" number="(04)" />
+                        <NavItem href="/blog" label="Blog" number="(03)" />
+                        <NavItem href="/about" label="About" number="(04)" />
+                        <NavItem href="/contact" label="Contact" number="(05)" />
                     </nav>
 
                     {/* Footer Socials & Theme Toggle */}
