@@ -17,7 +17,7 @@ export default function AdminDashboard() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const ADMIN_PIN = '1234';
+    const ADMIN_PIN = '151723114010843';
 
     const handleAuth = (e: React.FormEvent) => {
         e.preventDefault();

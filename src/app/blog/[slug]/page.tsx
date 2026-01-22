@@ -69,9 +69,10 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                 </time>
             </header>
 
-            <div className="prose dark:prose-invert prose-lg max-w-none">
-                <ReactMarkdown>{post.content}</ReactMarkdown>
-            </div>
+            <div
+                className="prose dark:prose-invert prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+            />
         </article>
     );
 }

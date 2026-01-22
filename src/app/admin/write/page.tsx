@@ -4,10 +4,17 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
+
+import dynamic from 'next/dynamic';
+import 'react-quill/dist/quill.snow.css';
+
+// Dynamic import to avoid SSR issues with ReactQuill
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
 function WriteBlogContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const editSlug = searchParams.get('slug'); // Check if we are editing
+    const editSlug = searchParams.get('slug');
 
     const [formData, setFormData] = useState({
         title: '',
@@ -20,12 +27,12 @@ function WriteBlogContent() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
 
-    // Simple hardcoded PIN
+    // Updated PIN
     const ADMIN_PIN = '151723114010843';
 
+    // ... (useEffect, fetchPostData, handleAuth, generateSlug, handleTitleChange remain same)
+
     useEffect(() => {
-        // If PIN is already entered (simulated session or just re-entry), potentially skip?
-        // For now, we always ask for PIN on refresh for security in this simple app.
         if (isAuthenticated && editSlug) {
             fetchPostData(editSlug);
         }
@@ -74,7 +81,6 @@ function WriteBlogContent() {
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const title = e.target.value;
-        // Only auto-generate slug if NOT editing (to avoid breaking links unexpectedly)
         if (!isEditing) {
             setFormData(prev => ({
                 ...prev,
@@ -107,7 +113,7 @@ function WriteBlogContent() {
             }
 
             alert(`Post ${isEditing ? 'updated' : 'created'} successfully!`);
-            router.push('/admin'); // Go back to dashboard
+            router.push('/admin');
         } catch (error) {
             console.error(error);
             alert(`Error ${isEditing ? 'updating' : 'creating'} post`);
@@ -116,6 +122,7 @@ function WriteBlogContent() {
         }
     };
 
+    // ... (Rest of authentication UI)
     if (!isAuthenticated) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-background">
@@ -171,8 +178,7 @@ function WriteBlogContent() {
                         onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
                         className={`w-full p-2 border rounded bg-background font-mono text-sm ${isEditing ? 'bg-muted/50 cursor-not-allowed' : ''}`}
                         placeholder="post-url-slug"
-                        disabled={isEditing} // Prevent changing slug on edit to simple keep URLs stable, or could allow
-                        title={isEditing ? "Slug cannot be changed directly to preserve URL" : ""}
+                        disabled={isEditing}
                     />
                 </div>
 
@@ -186,21 +192,32 @@ function WriteBlogContent() {
                     />
                 </div>
 
-                <div>
-                    <label className="block text-sm font-medium mb-1">Content (Markdown)</label>
-                    <textarea
-                        required
-                        value={formData.content}
-                        onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                        className="w-full p-2 border rounded bg-background h-96 font-mono text-sm"
-                        placeholder="# Write your post here..."
-                    />
+                <div className="mb-12">
+                    <label className="block text-sm font-medium mb-1">Content</label>
+                    <div className="bg-background text-foreground rounded-lg overflow-hidden">
+                        <ReactQuill
+                            theme="snow"
+                            value={formData.content}
+                            onChange={(content) => setFormData({ ...formData, content })}
+                            className="h-96 mb-12"
+                            modules={{
+                                toolbar: [
+                                    [{ 'header': [1, 2, 3, false] }],
+                                    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                                    [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+                                    [{ 'color': [] }, { 'background': [] }],
+                                    ['link', 'image'],
+                                    ['clean']
+                                ],
+                            }}
+                        />
+                    </div>
                 </div>
 
                 <button
                     type="submit"
                     disabled={loading}
-                    className={`w-full text-white p-3 rounded font-bold disabled:opacity-50 ${isEditing ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700'}`}
+                    className={`w-full text-white p-3 rounded font-bold disabled:opacity-50 mt-12 ${isEditing ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700'}`}
                 >
                     {loading ? 'Saving...' : (isEditing ? 'Update Post' : 'Publish Post')}
                 </button>
