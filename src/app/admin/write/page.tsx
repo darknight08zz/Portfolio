@@ -5,12 +5,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 
-import dynamic from 'next/dynamic';
-import 'react-quill/dist/quill.snow.css';
-
-// Dynamic import to avoid SSR issues with ReactQuill
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
+import Editor, { EditorProvider, Toolbar, BtnBold, BtnItalic, BtnUnderline, BtnStrikeThrough, BtnBulletList, BtnNumberedList, BtnLink, BtnClearFormatting } from 'react-simple-wysiwyg';
 function WriteBlogContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -192,25 +187,29 @@ function WriteBlogContent() {
                     />
                 </div>
 
+
+
                 <div className="mb-12">
                     <label className="block text-sm font-medium mb-1">Content</label>
-                    <div className="bg-background text-foreground rounded-lg overflow-hidden">
-                        <ReactQuill
-                            theme="snow"
-                            value={formData.content}
-                            onChange={(content) => setFormData({ ...formData, content })}
-                            className="h-96 mb-12"
-                            modules={{
-                                toolbar: [
-                                    [{ 'header': [1, 2, 3, false] }],
-                                    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-                                    [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-                                    [{ 'color': [] }, { 'background': [] }],
-                                    ['link', 'image'],
-                                    ['clean']
-                                ],
-                            }}
-                        />
+                    <div className="bg-background text-foreground rounded-lg overflow-hidden border border-input">
+                        <EditorProvider>
+                            <Editor
+                                value={formData.content}
+                                onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                                containerProps={{ style: { height: '384px', overflowY: 'auto' } }}
+                            >
+                                <Toolbar>
+                                    <BtnBold />
+                                    <BtnItalic />
+                                    <BtnUnderline />
+                                    <BtnStrikeThrough />
+                                    <BtnBulletList />
+                                    <BtnNumberedList />
+                                    <BtnLink />
+                                    <BtnClearFormatting />
+                                </Toolbar>
+                            </Editor>
+                        </EditorProvider>
                     </div>
                 </div>
 
