@@ -5,6 +5,69 @@ import Link from 'next/link';
 
 const projects = [
   {
+    title: 'AI Study Companion',
+    description: 'AI-powered study assistant for personalized learning and resource management.',
+    tags: ['AI', 'Python', 'Education'],
+    year: '2024',
+    href: 'https://github.com/darknight08zz/AI-Study-Companion'
+  },
+  {
+    title: 'fMRI Preprocessing',
+    description: 'Comprehensive preprocessing pipeline for functional MRI data analysis.',
+    tags: ['Python', 'Neuroscience', 'Imaging'],
+    year: '2024',
+    href: 'https://github.com/darknight08zz/fmri_preproc'
+  },
+  {
+    title: 'FinPath',
+    description: 'Financial tracking application for personal finance management.',
+    tags: ['Finance', 'Web'],
+    year: '2024',
+    href: 'https://github.com/darknight08zz/FinPath'
+  },
+  {
+    title: 'AlgoVisu',
+    description: 'Interactive algorithm visualization platform for educational purposes.',
+    tags: ['React', 'Algorithms', 'Visualization'],
+    year: '2024',
+    href: 'https://github.com/darknight08zz/AlgoVisu'
+  },
+  {
+    title: 'Agent AI Loan Chatbot',
+    description: 'Intelligent chatbot system designed to assist with loan inquiries and processing.',
+    tags: ['AI', 'NLP', 'Python'],
+    year: '2024',
+    href: 'https://github.com/darknight08zz/Agent-AI-loan-chatbot'
+  },
+  {
+    title: 'Duplicate File Cleaner',
+    description: 'Efficient utility tool for identifying and removing duplicate files to save storage.',
+    tags: ['Python', 'Automation', 'CLI'],
+    year: '2024',
+    href: 'https://github.com/darknight08zz/duplicate-file-cleaner'
+  },
+  {
+    title: 'CodeWeave',
+    description: 'Collaborative coding environment and development tool.',
+    tags: ['Web', 'Developer Tools'],
+    year: '2024',
+    href: 'https://github.com/darknight08zz/CodeWeave'
+  },
+  {
+    title: 'History Sync Visualizer',
+    description: 'Tool to visualize and manage browser history synchronization across devices.',
+    tags: ['Visualization', 'Web', 'Data'],
+    year: '2024',
+    href: 'https://github.com/darknight08zz/History-Sync-Visualizer'
+  },
+  {
+    title: 'SafeFollow',
+    description: 'Safety-focused application for real-time location tracking and alerts.',
+    tags: ['Mobile', 'Safety', 'GPS'],
+    year: '2024',
+    href: 'https://github.com/darknight08zz/SafeFollow'
+  },
+  {
     title: 'Earthquake Data Analysis',
     description: 'Statistical modeling and pattern recognition of global seismic data.',
     tags: ['Python', 'Pandas', 'Data Science'],
@@ -16,7 +79,7 @@ const projects = [
     description: 'Computer vision pipeline for automated grading of OMR sheets.',
     tags: ['OpenCV', 'Python', 'AI'],
     year: '2024',
-    href: 'https://github.com/darknight08zz/Automated-OMR-Evaluation-Scoring-System'
+    href: 'https://github.com/darknight08zz/OMR'
   },
   {
     title: 'ASL Alphabet Recognition',
@@ -24,20 +87,6 @@ const projects = [
     tags: ['TensorFlow', 'Deep Learning'],
     year: '2023',
     href: 'https://github.com/darknight08zz/ASL_alphabet_recognition'
-  },
-  {
-    title: 'DSA Visualizer',
-    description: 'Interactive algorithm visualization platform.',
-    tags: ['React', 'Algorithms'],
-    year: '2023',
-    href: 'https://github.com/darknight08zz/DSA-Visualizer'
-  },
-  {
-    title: 'XIMConnect',
-    description: 'Campus networking and collaboration platform.',
-    tags: ['React', 'Node.js', 'PostgreSQL'],
-    year: '2023',
-    href: 'https://github.com/darknight08zz/Web-_Tech_Project_XIMConnect'
   }
 ];
 
