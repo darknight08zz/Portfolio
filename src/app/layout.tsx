@@ -1,15 +1,25 @@
-'use client';
-
-import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from 'next-themes';
-import { Sidebar } from '@/components/Sidebar';
-// Removed: AIChatbot, Header, Footer (as per new design)
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import CustomCursor from '@/components/ui/CustomCursor';
+import LenisProvider from '@/components/LenisProvider';
+import { ScrollProgress } from '@/components/ui/ScrollProgress';
+import PageTransition from '@/components/PageTransition';
+import { AIChatbot } from '@/components/ui/ai-chatbot';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
+export const metadata: Metadata = {
+  title: 'Ujjwal Prajapati — Frontend Developer & AI Engineer',
+  description: 'B.Tech CSE student at XIM University building full-stack applications and AI/ML systems. CGPA 9.18 | Merit Scholar | Hackathon finalist.',
+  keywords: ['Ujjwal Prajapati', 'Frontend Developer', 'AI Engineer', 'Next.js', 'React', 'XIM University'],
+  openGraph: {
+    title: 'Ujjwal Prajapati — Portfolio',
+    description: 'Frontend Developer & AI Engineer. Building intelligent, scalable applications.',
+    url: 'https://portfolio-ten-rho-5rwffdr5ms.vercel.app',
+    type: 'website',
+  },
+};
 
 export default function RootLayout({
   children,
@@ -18,32 +28,36 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans bg-background text-foreground antialiased overflow-hidden`}>
+      <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased selection:bg-[var(--accent-primary)] selection:text-white noise-overlay">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange={false}
         >
-          <div className="flex h-screen w-full relative">
-            {/* Ambient Background for Dark Mode */}
-            <div className="fixed inset-0 z-0 pointer-events-none opacity-0 dark:opacity-100 transition-opacity duration-500 bg-ambient-glow mix-blend-screen" />
+          <LenisProvider>
+            {/* Scroll Progress Bar */}
+            <ScrollProgress />
 
-            {/* Left Sidebar */}
-            <div className="flex-none md:w-64 z-50">
-              <Sidebar />
-            </div>
+            {/* Custom Cursor at root level */}
+            <CustomCursor />
+            
+            {/* Fixed Navigation */}
+            <Navbar />
 
-            {/* Main Content Area */}
-            <main className="flex-1 h-full overflow-y-auto overflow-x-hidden relative z-10">
-              {/* Vignette Overlay Effect (Adjusted for Dark Mode) */}
-              <div className="pointer-events-none fixed inset-0 z-30 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-blue-900/5 opacity-0 md:opacity-100 dark:to-black/80 dark:mix-blend-overlay" />
-
-              <div className="min-h-full w-full px-4 py-20 md:px-12 md:py-12 max-w-5xl mx-auto">
+            {/* Main Content with Transitions */}
+            <main className="relative z-[var(--z-base)] pt-[80px]">
+              <PageTransition>
                 {children}
-              </div>
+              </PageTransition>
             </main>
-          </div>
+
+            {/* AI Chatbot */}
+            <AIChatbot />
+
+            {/* Footer */}
+            <Footer />
+          </LenisProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,2 +1,3 @@
-// Utility functions (empty for now, but ready for expansion)
-export {};
+export function cn(...inputs: (string | undefined | null | false)[]) {
+  return inputs.filter(Boolean).join(' ');
+}

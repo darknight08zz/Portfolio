@@ -2,7 +2,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: ['class'],
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,26 +11,48 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
+        display: ['Syne', 'sans-serif'],
+        body: ['Outfit', 'sans-serif'],
+        mono: ['DM Mono', 'monospace'],
       },
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        muted: 'var(--muted)',
-        border: 'var(--border)',
         accent: {
-          DEFAULT: '#00ff00', // Bright green for availability
-          foreground: '#000000',
+          primary: '#7c3aed',
+          secondary: '#a855f7',
+          cyan: '#22d3ee',
+          warm: '#f59e0b',
+        },
+        dark: {
+          primary: '#0a0a0a',
+          secondary: '#111111',
+          card: '#141414',
+          elevated: '#1a1a1a',
         },
       },
-      borderRadius: {
-        lg: '0px',
-        md: '0px',
-        sm: '0px',
+      animation: {
+        'fade-up': 'fadeUp 0.6s ease forwards',
+        'fade-in': 'fadeIn 0.4s ease forwards',
+        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
       },
-      backgroundImage: {
-        'ambient-glow': 'radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 50%)',
-      }
+      keyframes: {
+        fadeUp: {
+          from: { opacity: '0', transform: 'translateY(24px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        glowPulse: {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(124, 58, 237, 0.25)' },
+          '50%': { boxShadow: '0 0 50px rgba(124, 58, 237, 0.5)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-12px)' },
+        },
+      },
     },
   },
   plugins: [],

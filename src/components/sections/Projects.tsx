@@ -1,147 +1,114 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { projects } from '@/data/projects';
+import { ProjectCard } from '@/components/ui/ProjectCard';
+import { useReveal } from '@/hooks/useReveal';
 
-const projects = [
-  {
-    title: 'AI Study Companion',
-    description: 'AI-powered study assistant for personalized learning and resource management.',
-    tags: ['AI', 'Python', 'Education'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/AI-Study-Companion'
-  },
-  /*{
-    title: 'fMRI Preprocessing',
-    description: 'Comprehensive preprocessing pipeline for functional MRI data analysis.',
-    tags: ['Python', 'Neuroscience', 'Imaging'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/fmri_preproc'
-  },*/
-  {
-    title: 'FinPath',
-    description: 'Financial tracking application for personal finance management.',
-    tags: ['Finance', 'Web'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/FinPath'
-  },
-  {
-    title: 'AlgoVisu',
-    description: 'Interactive algorithm visualization platform for educational purposes.',
-    tags: ['React', 'Algorithms', 'Visualization'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/AlgoVisu'
-  },
-  /*{
-    title: 'Agent AI Loan Chatbot',
-    description: 'Intelligent chatbot system designed to assist with loan inquiries and processing.',
-    tags: ['AI', 'NLP', 'Python'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/Agent-AI-loan-chatbot'
-  },*/
-  {
-    title: 'Duplicate File Cleaner',
-    description: 'Efficient utility tool for identifying and removing duplicate files to save storage.',
-    tags: ['Python', 'Automation', 'CLI'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/duplicate-file-cleaner'
-  },
-  /*{
-    title: 'CodeWeave',
-    description: 'Collaborative coding environment and development tool.',
-    tags: ['Web', 'Developer Tools'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/CodeWeave'
-  },*/
-  {
-    title: 'History Sync Visualizer',
-    description: 'Tool to visualize and manage browser history synchronization across devices.',
-    tags: ['Visualization', 'Web', 'Data'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/History-Sync-Visualizer'
-  },
-  {
-    title: 'SafeFollow',
-    description: 'Safety-focused application for real-time location tracking and alerts.',
-    tags: ['Mobile', 'Safety', 'GPS'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/SafeFollow'
-  },
-  {
-    title: 'Earthquake Data Analysis',
-    description: 'Statistical modeling and pattern recognition of global seismic data.',
-    tags: ['Python', 'Pandas', 'Data Science'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/Earthquake-Data-Analysis'
-  },
-  {
-    title: 'Automated OMR System',
-    description: 'Computer vision pipeline for automated grading of OMR sheets.',
-    tags: ['OpenCV', 'Python', 'AI'],
-    year: '2024',
-    href: 'https://github.com/darknight08zz/OMR'
-  },
-  /*{
-    title: 'ASL Alphabet Recognition',
-    description: 'Real-time sign language detection using CNNs.',
-    tags: ['TensorFlow', 'Deep Learning'],
-    year: '2023',
-    href: 'https://github.com/darknight08zz/ASL_alphabet_recognition'
-  }*/
+const filters = [
+  { name: 'All', value: 'all' },
+  { name: 'AI / ML', value: 'ai' },
+  { name: 'Full Stack', value: 'fullstack' },
+  { name: 'Research', value: 'research' },
+  { name: 'Systems', value: 'systems' },
 ];
 
 export function Projects() {
+  const { ref, inView } = useReveal();
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [showAll, setShowAll] = useState(false);
+
+  const filteredProjects = projects.filter(
+    (p) => activeFilter === 'all' || p.category === activeFilter
+  );
+
+  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3);
+
   return (
-    <section className="py-24 border-t border-border" id="projects">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-        {/* Label */}
-        <div className="md:col-span-1">
-          <span className="text-sm font-mono text-muted tracking-widest uppercase sticky top-24">
-            (03) Selected Work
-          </span>
+    <section ref={ref} id="projects" className="py-[var(--section-padding)] bg-[var(--bg-primary)]">
+      <div className="container mx-auto">
+        
+        {/* Header */}
+        <div className="mb-12 flex flex-col items-center md:items-start">
+          <motion.span 
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase mb-4"
+          >
+            [Selected Work]
+          </motion.span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            className="relative"
+          >
+            <h2 className="text-heading text-[var(--text-primary)]">Projects</h2>
+            <div className="absolute -bottom-2 left-0 w-12 h-1 bg-violet-600 rounded-full" />
+          </motion.div>
         </div>
 
-        {/* Content */}
-        <div className="md:col-span-3">
-          <div className="flex flex-col">
-            {projects.map((project, i) => (
-              <motion.a
-                key={i}
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="group py-8 border-b border-border first:border-t flex flex-col md:flex-row md:items-baseline justify-between gap-4 hover:bg-gray-50 dark:hover:bg-zinc-900/50 transition-colors px-4 -mx-4 rounded-lg"
+        {/* Filters */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.3 }}
+          className="mb-12 flex flex-wrap gap-3 justify-center md:justify-start"
+        >
+          {filters.map((filter) => (
+            <button
+              key={filter.value}
+              onClick={() => setActiveFilter(filter.value)}
+              className={`px-5 py-2 rounded-full font-body text-sm transition-all duration-300 ${
+                activeFilter === filter.value
+                  ? 'bg-[var(--accent-primary)] text-white shadow-[0_0_15px_var(--accent-glow)]'
+                  : 'border border-white/10 text-[var(--text-secondary)] hover:border-white/20 hover:text-[var(--text-primary)]'
+              }`}
+            >
+              {filter.name}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Grid */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {displayedProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
               >
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-foreground group-hover:underline decoration-1 underline-offset-4">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted mt-2 max-w-md">{project.description}</p>
-                </div>
-
-                <div className="flex flex-col md:items-end gap-2">
-                  <div className="flex gap-2">
-                    {project.tags.map((tag, t) => (
-                      <span key={t} className="text-xs font-mono text-muted uppercase tracking-wider">
-                        [{tag}]
-                      </span>
-                    ))}
-                  </div>
-                  <span className="text-xs font-mono text-muted">{project.year}</span>
-                </div>
-              </motion.a>
+                <ProjectCard project={project} />
+              </motion.div>
             ))}
-          </div>
+          </AnimatePresence>
+        </motion.div>
 
-          <div className="mt-12">
-            <Link href="/projects" className="text-sm font-mono uppercase tracking-widest hover:underline decoration-1 underline-offset-4">
-              View All Projects ↗
-            </Link>
-          </div>
-        </div>
+        {/* Show More Button */}
+        {filteredProjects.length > 3 && !showAll && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.5 }}
+            className="mt-16 flex justify-center"
+          >
+            <button
+              onClick={() => setShowAll(true)}
+              className="group flex items-center gap-3 font-mono text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
+              Show All Projects
+              <span className="w-8 h-[1px] bg-white/20 transition-all group-hover:w-12 group-hover:bg-[var(--accent-primary)]" />
+              →
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
