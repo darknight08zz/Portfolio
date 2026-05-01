@@ -67,92 +67,131 @@ export function Hero() {
       />
 
       {/* LAYER 3: Content */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-4xl flex flex-col items-center md:items-start text-center md:text-left"
-      >
-        
-        {/* A. EYEBROW LINE */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-6"
-        >
-          <span className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase border border-[var(--accent-cyan)]/20 px-3 py-1 rounded-sm">
-            [Frontend Developer & AI Engineer]
-          </span>
-        </motion.div>
-
-        {/* B. MAIN HEADING */}
-        <div className="mb-8">
-          <motion.h1 
-            className="text-display text-[var(--text-primary)]"
-            initial={{ clipPath: 'inset(0 0 100% 0)' }}
-            animate={inView ? { clipPath: 'inset(0 0 0% 0)' } : {}}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            UJJWAL
-          </motion.h1>
-          <motion.h1 
-            className="text-display gradient-text"
-            initial={{ clipPath: 'inset(0 0 100% 0)' }}
-            animate={inView ? { clipPath: 'inset(0 0 0% 0)' } : {}}
-            transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          >
-            PRAJAPATI
-          </motion.h1>
-        </div>
-
-        {/* C. SUBHEADING */}
-        <motion.p
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+        <motion.div 
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="font-body font-[300] text-[clamp(1rem,2vw,1.25rem)] text-[var(--text-secondary)] max-w-[520px] mb-10 leading-relaxed"
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl"
         >
-          Building intelligent, scalable applications. B.Tech CSE @ XIM University — CGPA 9.18 | Merit Scholar
-        </motion.p>
+          
+          {/* A. EYEBROW LINE */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-6"
+          >
+            <span className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase border border-[var(--accent-cyan)]/20 px-3 py-1 rounded-sm">
+              [Frontend Developer & AI Engineer]
+            </span>
+          </motion.div>
 
-        {/* D. CTA ROW */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="flex flex-wrap items-center gap-4 mb-16"
-        >
-          <a
-            href="#projects"
-            data-cursor="pointer"
-            className="bg-[var(--accent-primary)] text-white font-body font-[500] py-3 px-8 rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_var(--accent-glow)] flex items-center gap-2"
+          {/* B. MAIN HEADING */}
+          <div className="mb-8">
+            <motion.h1 
+              className="text-display text-[var(--text-primary)]"
+              initial={{ clipPath: 'inset(0 0 100% 0)' }}
+              animate={inView ? { clipPath: 'inset(0 0 0% 0)' } : {}}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              UJJWAL
+            </motion.h1>
+            <motion.h1 
+              className="text-display gradient-text"
+              initial={{ clipPath: 'inset(0 0 100% 0)' }}
+              animate={inView ? { clipPath: 'inset(0 0 0% 0)' } : {}}
+              transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            >
+              PRAJAPATI
+            </motion.h1>
+          </div>
+
+          {/* C. SUBHEADING */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="font-body font-[300] text-[clamp(1rem,2vw,1.25rem)] text-[var(--text-secondary)] max-w-[520px] mb-10 leading-relaxed"
           >
-            View Projects →
-          </a>
-          <a
-            href="/resume.pdf"
-            data-cursor="pointer"
-            className="border border-white/20 text-[var(--text-primary)] font-body font-[500] py-3 px-8 rounded-full transition-all duration-300 hover:bg-white/5 hover:border-white/40"
+            Building intelligent, scalable applications. B.Tech CSE @ XIM University — CGPA 9.18 | Merit Scholar
+          </motion.p>
+
+          {/* D. CTA ROW */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="flex flex-wrap items-center gap-4 mb-16"
           >
-            Download Resume
-          </a>
+            <a
+              href="#projects"
+              data-cursor="pointer"
+              className="bg-[var(--accent-primary)] text-white font-body font-[500] py-3 px-8 rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_var(--accent-glow)] flex items-center gap-2"
+            >
+              View Projects →
+            </a>
+            <a
+              href="/resume.pdf"
+              data-cursor="pointer"
+              className="border border-white/20 text-[var(--text-primary)] font-body font-[500] py-3 px-8 rounded-full transition-all duration-300 hover:bg-white/5 hover:border-white/40"
+            >
+              Download Resume
+            </a>
+          </motion.div>
+
+          {/* E. STATS ROW */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            className="flex items-center gap-8 md:gap-12"
+          >
+            <Counter value="9.18" label="GPA" />
+            <div className="w-[1px] h-10 bg-white/10" />
+            <Counter value={200} label="DSA Solved" suffix="+" />
+            <div className="w-[1px] h-10 bg-white/10" />
+            <Counter value={10} label="Projects Built" suffix="+" />
+          </motion.div>
         </motion.div>
 
-        {/* E. STATS ROW */}
+        {/* F. PROFILE IMAGE (Desktop Only) */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="flex items-center gap-8 md:gap-12"
+          initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+          animate={inView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
+          transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden lg:block relative"
         >
-          <Counter value="9.18" label="GPA" />
-          <div className="w-[1px] h-10 bg-white/10" />
-          <Counter value={200} label="DSA Solved" suffix="+" />
-          <div className="w-[1px] h-10 bg-white/10" />
-          <Counter value={10} label="Projects Built" suffix="+" />
+          {/* Decorative Rings */}
+          <div className="absolute inset-[-20px] border border-white/5 rounded-full animate-[spin_20s_linear_infinite]" />
+          <div className="absolute inset-[-40px] border border-white/5 rounded-full animate-[spin_30s_linear_infinite_reverse]" />
+          
+          <div className="relative w-[400px] h-[400px] rounded-full overflow-hidden border-[8px] border-white/5 shadow-2xl">
+            <img
+              src="/Ujjwal_Profile_photo.jpeg"
+              alt="Ujjwal Prajapati"
+              className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-1000 scale-110 hover:scale-100"
+            />
+            {/* Glassmorphism gradient */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent-primary)]/20 to-transparent opacity-40 mix-blend-overlay" />
+          </div>
+
+          {/* Floating Badge */}
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-4 -right-4 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-3"
+          >
+            <div className="w-10 h-10 rounded-full bg-[var(--accent-primary)]/10 flex items-center justify-center text-[var(--accent-primary)]">
+              🚀
+            </div>
+            <div>
+              <p className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider">Current Focus</p>
+              <p className="text-xs font-display font-bold text-[var(--text-primary)]">Full-stack & AI</p>
+            </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* F. SCROLL INDICATOR */}
       <motion.div

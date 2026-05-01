@@ -27,15 +27,25 @@ export function About() {
               {/* Card Content */}
               <div className="relative w-[340px] h-[420px] bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl p-8 flex flex-col items-center justify-between overflow-hidden">
                 
-                {/* Monogram */}
-                <div className="flex-1 flex items-center justify-center">
-                  <h2 className="font-display font-[800] text-[clamp(6rem,10vw,9rem)] gradient-text select-none">
-                    U
-                  </h2>
+                {/* Profile Image Container */}
+                <div className="relative w-full aspect-square mb-6 overflow-hidden rounded-xl border border-white/10 group-hover:border-[var(--accent-primary)]/30 transition-colors duration-500">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full h-full"
+                  >
+                    <img
+                      src="/Ujjwal_Profile_photo.jpeg"
+                      alt="Ujjwal Prajapati"
+                      className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                    />
+                  </motion.div>
+                  {/* Glass Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)]/40 to-transparent pointer-events-none" />
                 </div>
 
                 {/* Status Pill */}
-                <div className="mb-8 flex items-center gap-3 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full">
+                <div className="mb-6 flex items-center gap-3 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
