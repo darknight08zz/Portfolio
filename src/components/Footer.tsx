@@ -49,7 +49,7 @@ const Footer = () => {
             <Github className="w-5 h-5" />
           </a>
           <a 
-            href="https://linkedin.com/in/ujjwal-prajapati" 
+            href="https://www.linkedin.com/in/ujjwal-prajapati-34b44b285/" 
             target="_blank" 
             className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
           >

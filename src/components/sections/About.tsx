@@ -60,7 +60,7 @@ export function About() {
                   <a href="https://github.com/darknight08zz" target="_blank" data-cursor="pointer" className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
                     <Github className="w-5 h-5" />
                   </a>
-                  <a href="https://linkedin.com/in/ujjwal-prajapati" target="_blank" data-cursor="pointer" className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
+                  <a href="https://www.linkedin.com/in/ujjwal-prajapati-34b44b285/" target="_blank" data-cursor="pointer" className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
                     <Linkedin className="w-5 h-5" />
                   </a>
                   <a href="mailto:prajapatiujjwal0802@gmail.com" data-cursor="pointer" className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
@@ -98,7 +98,7 @@ export function About() {
               className="space-y-6 mb-10"
             >
               <p className="font-body font-[300] text-[var(--text-secondary)] text-lg leading-relaxed">
-                I'm a B.Tech CSE student at XIM University (Sem VI, CGPA 9.16 | Merit Scholar) building full-stack web applications and AI/ML systems. My work spans React/Next.js frontends, Python-based ML pipelines, and neuroimaging research tools.
+                I'm a final-year B.Tech CSE student at XIM University (CGPA 9.16 | Merit Scholar) building full-stack web applications and AI/ML systems. My work spans React/Next.js frontends, Python-based ML pipelines, and neuroimaging research tools.
               </p>
               <p className="font-body font-[300] text-[var(--text-secondary)] text-lg leading-relaxed">
                 I've competed in multiple national hackathons — 2nd Runner-Up at Technova Hackathon — and shipped projects ranging from real-time fraud detection to fMRI preprocessing pipelines. I thrive at the intersection of engineering rigor and product thinking.

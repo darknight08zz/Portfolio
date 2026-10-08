@@ -16,7 +16,7 @@ const navLinks = [
 
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/darknight08zz', icon: 'GH' },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/ujjwal-prajapati', icon: 'LI' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/ujjwal-prajapati-34b44b285/', icon: 'LI' },
 ];
 
 const Navbar = () => {

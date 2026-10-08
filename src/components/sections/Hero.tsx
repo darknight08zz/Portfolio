@@ -159,7 +159,7 @@ export function Hero() {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://linkedin.com/in/ujjwal-prajapati"
+                href="https://www.linkedin.com/in/ujjwal-prajapati-34b44b285/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"

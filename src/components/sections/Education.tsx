@@ -8,7 +8,7 @@ import { TimelineItem } from '@/components/ui/TimelineItem';
 const educationData = [
   {
     title: 'XIM University',
-    subtitle: 'B.Tech Computer Science & Engineering',
+    subtitle: 'B.Tech Computer Science & Engineering (Final Year)',
     year: '2023–2027',
     description: 'Current CGPA: 9.16 | Merit Scholarship Recipient for Academic Excellence.',
   },

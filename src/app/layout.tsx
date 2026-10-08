@@ -11,7 +11,7 @@ import { AIChatbot } from '@/components/ui/ai-chatbot';
 
 export const metadata: Metadata = {
   title: 'Ujjwal Prajapati — Frontend Developer & AI Engineer',
-  description: 'B.Tech CSE student at XIM University building full-stack applications and AI/ML systems. CGPA 9.16 | Merit Scholar | Hackathon finalist.',
+  description: 'Final-year B.Tech CSE student at XIM University building full-stack applications and AI/ML systems. CGPA 9.16 | Merit Scholar | Hackathon finalist.',
   keywords: ['Ujjwal Prajapati', 'Frontend Developer', 'AI Engineer', 'Next.js', 'React', 'XIM University'],
   openGraph: {
     title: 'Ujjwal Prajapati — Portfolio',

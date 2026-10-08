@@ -35,10 +35,10 @@ export function AIChatbot() {
   const predefinedResponses: { [key: string]: string } = {
     'projects': "Ujjwal has worked on several impressive projects including: 1) Automated OMR Evaluation System using OpenCV, 2) ASL Alphabet Recognition with TensorFlow, 3) DSA Visualizer for learning algorithms, 4) Unauth Billboard - an anonymous campus platform, 5) XIMConnect - a campus networking platform, and 6) Earthquake Data Analysis using Python and Pandas.",
     'skills': "Ujjwal's main skills include: Frontend: React, TypeScript, Tailwind CSS, Framer Motion. Backend: Node.js, Express.js, MongoDB, PostgreSQL. AI & Data: TensorFlow, OpenCV, Pandas, NumPy. He has 2+ years of experience and has solved 200+ DSA problems.",
-    'experience': "Currently a B.Tech CSE student at XIM University. 2+ years of frontend development experience. Strong background in AI/ML and data analysis. Skilled in building scalable web applications and solving complex problems.",
-    'contact': "You can reach Ujjwal at: Email: prajapatiujjwal0802@gmail.com. GitHub: github.com/darknight08zz. He's always open to collaborations and interesting projects!",
-    'ai': "Ujjwal is very interested in AI and has worked with TensorFlow, OpenCV, and built projects like ASL recognition and OMR evaluation systems. He's passionate about leveraging AI to solve real-world problems.",
-    'education': "Ujjwal is a B.Tech CSE student at XIM University (Semester VI). He's a Merit Scholar with a 9.16 CGPA, actively learning and implementing new technologies in his projects.",
+    'experience': "Currently a final-year B.Tech CSE student at XIM University with hands-on software development and frontend engineering experience. Skilled in React, Next.js, TypeScript, building scalable web applications, and algorithmic problem solving.",
+    'contact': "You can reach Ujjwal at: Email: prajapatiujjwal0802@gmail.com. GitHub: github.com/darknight08zz. LinkedIn: linkedin.com/in/ujjwal-prajapati-34b44b285. He's always open to new grad opportunities, software engineering roles, and collaborations!",
+    'ai': "Ujjwal is very interested in AI and has worked with TensorFlow, PyTorch, OpenCV, and built projects like CrowdShield (real-time crowd safety platform) and NetSentinel (deep learning NIDS).",
+    'education': "Ujjwal is a final-year B.Tech CSE student at XIM University. He's a Merit Scholar with a 9.16 CGPA, has solved 900+ LeetCode problems with an 863-day active streak, and is CS50x certified.",
   };
 
   const getResponse = (userMessage: string): string => {

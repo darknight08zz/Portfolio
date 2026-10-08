@@ -33,8 +33,8 @@ export function Contact() {
     },
     {
       icon: <Linkedin className="w-[18px] h-[18px] text-[var(--accent-secondary)]" />,
-      label: 'linkedin.com/in/ujjwal-prajapati',
-      href: 'https://linkedin.com/in/ujjwal-prajapati',
+      label: 'linkedin.com/in/ujjwal-prajapati-34b44b285',
+      href: 'https://www.linkedin.com/in/ujjwal-prajapati-34b44b285/',
     },
     {
       icon: <MapPin className="w-[18px] h-[18px] text-[var(--accent-secondary)]" />,
