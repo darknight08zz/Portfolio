@@ -98,7 +98,7 @@ export function About() {
               className="space-y-6 mb-10"
             >
               <p className="font-body font-[300] text-[var(--text-secondary)] text-lg leading-relaxed">
-                I'm a B.Tech CSE student at XIM University (Sem VI, CGPA 9.18 | Merit Scholar) building full-stack web applications and AI/ML systems. My work spans React/Next.js frontends, Python-based ML pipelines, and neuroimaging research tools.
+                I'm a B.Tech CSE student at XIM University (Sem VI, CGPA 9.16 | Merit Scholar) building full-stack web applications and AI/ML systems. My work spans React/Next.js frontends, Python-based ML pipelines, and neuroimaging research tools.
               </p>
               <p className="font-body font-[300] text-[var(--text-secondary)] text-lg leading-relaxed">
                 I've competed in multiple national hackathons — 2nd Runner-Up at Technova Hackathon — and shipped projects ranging from real-time fraud detection to fMRI preprocessing pipelines. I thrive at the intersection of engineering rigor and product thinking.
@@ -113,7 +113,7 @@ export function About() {
               className="flex flex-wrap gap-3"
             >
               {[
-                "9.18 CGPA",
+                "9.16 CGPA",
                 "Merit Scholar",
                 "Technova 2nd Runner-Up",
                 "CS50x Certified"

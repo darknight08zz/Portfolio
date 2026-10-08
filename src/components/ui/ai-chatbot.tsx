@@ -38,7 +38,7 @@ export function AIChatbot() {
     'experience': "Currently a B.Tech CSE student at XIM University. 2+ years of frontend development experience. Strong background in AI/ML and data analysis. Skilled in building scalable web applications and solving complex problems.",
     'contact': "You can reach Ujjwal at: Email: prajapatiujjwal0802@gmail.com. GitHub: github.com/darknight08zz. He's always open to collaborations and interesting projects!",
     'ai': "Ujjwal is very interested in AI and has worked with TensorFlow, OpenCV, and built projects like ASL recognition and OMR evaluation systems. He's passionate about leveraging AI to solve real-world problems.",
-    'education': "Ujjwal is a B.Tech CSE student at XIM University (Semester VI). He's a Merit Scholar with a 9.18 CGPA, actively learning and implementing new technologies in his projects.",
+    'education': "Ujjwal is a B.Tech CSE student at XIM University (Semester VI). He's a Merit Scholar with a 9.16 CGPA, actively learning and implementing new technologies in his projects.",
   };
 
   const getResponse = (userMessage: string): string => {

@@ -6,20 +6,28 @@ import { useReveal } from '@/hooks/useReveal';
 
 const skillCategories = [
   {
+    title: 'Languages',
+    skills: ['TypeScript', 'JavaScript', 'Python', 'C++', 'Java'],
+  },
+  {
     title: 'Frontend',
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Redux'],
+    skills: ['React', 'Next.js', 'Tailwind CSS', 'HTML5 / CSS3', 'Framer Motion', 'Redux'],
   },
   {
-    title: 'Backend',
-    skills: ['Node.js', 'Express', 'FastAPI', 'REST APIs', 'MongoDB', 'PostgreSQL', 'Supabase'],
+    title: 'Backend & APIs',
+    skills: ['Node.js', 'FastAPI', 'Express.js', 'REST APIs', 'WebSockets'],
   },
   {
-    title: 'AI / ML',
-    skills: ['PyTorch', 'TensorFlow', 'OpenCV', 'Scikit-learn', 'XGBoost', 'SHAP', 'GSAP'],
+    title: 'Databases',
+    skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'Supabase'],
   },
   {
-    title: 'Systems',
-    skills: ['Python', 'C/C++', 'Git', 'Docker', 'Linux', 'Kafka'],
+    title: 'Tools & Platforms',
+    skills: ['Git', 'GitHub', 'Docker', 'Vercel', 'Linux'],
+  },
+  {
+    title: 'Core Engineering',
+    skills: ['Data Structures & Algorithms', 'Testing (Pytest, Jest)', 'API Integration', 'Performance Optimization'],
   },
 ];
 
@@ -49,13 +57,13 @@ export function Skills() {
         </div>
 
         {/* Skills Cloud / Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {skillCategories.map((category, idx) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ delay: idx * 0.08 }}
               className="flex flex-col"
             >
               <h3 className="font-mono text-[0.7rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase mb-6">

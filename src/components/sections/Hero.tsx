@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, animate } from 'framer-motion';
+import { ArrowRight, Code2, FileText, Github, Linkedin } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 
 const Counter = ({ value, label, suffix = "" }: { value: number | string, label: string, suffix?: string }) => {
@@ -42,7 +43,7 @@ export function Hero() {
   const { ref, inView } = useReveal();
 
   return (
-    <section ref={ref} id="home" className="relative h-[100svh] w-full overflow-hidden flex flex-col justify-center items-start bg-[var(--bg-primary)] px-[max(5vw,2rem)]">
+    <section ref={ref} id="home" className="relative min-h-[100svh] w-full overflow-hidden flex flex-col justify-center items-start bg-[var(--bg-primary)] px-[max(5vw,2rem)] py-20 lg:py-0">
       
       {/* LAYER 1: Background Grid */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
@@ -82,13 +83,13 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-6"
           >
-            <span className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase border border-[var(--accent-cyan)]/20 px-3 py-1 rounded-sm">
-              [Frontend Developer & AI Engineer]
+            <span className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase border border-[var(--accent-cyan)]/25 px-3.5 py-1.5 rounded-full bg-[var(--accent-cyan)]/5">
+              [ Software Engineer & Frontend Developer ]
             </span>
           </motion.div>
 
           {/* B. MAIN HEADING */}
-          <div className="mb-8">
+          <div className="mb-6">
             <motion.h1 
               className="text-display text-[var(--text-primary)]"
               initial={{ clipPath: 'inset(0 0 100% 0)' }}
@@ -107,37 +108,67 @@ export function Hero() {
             </motion.h1>
           </div>
 
-          {/* C. SUBHEADING */}
-          <motion.p
+          {/* C. SUBHEADING & POSITIONING */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="font-body font-[300] text-[clamp(1rem,2vw,1.25rem)] text-[var(--text-secondary)] max-w-[520px] mb-10 leading-relaxed"
+            className="space-y-3 mb-8 max-w-[560px]"
           >
-            Building intelligent, scalable applications. B.Tech CSE @ XIM University — CGPA 9.18 | Merit Scholar
-          </motion.p>
+            <p className="font-body font-[500] text-[clamp(1.05rem,2vw,1.25rem)] text-[var(--text-primary)] leading-snug">
+              Software Engineer & Frontend Developer building scalable, interactive web applications.
+            </p>
+            <p className="font-body font-[300] text-[clamp(0.9rem,1.6vw,1rem)] text-[var(--text-secondary)] leading-relaxed">
+              Specialized in React, Next.js, and TypeScript with real-world experience building interactive web applications and SaaS frontends. Backed by strong problem-solving fundamentals with 900+ LeetCode problems solved across an 863-day active streak.
+            </p>
+          </motion.div>
 
           {/* D. CTA ROW */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="flex flex-wrap items-center gap-4 mb-16"
+            className="flex flex-wrap items-center gap-4 mb-12"
           >
             <a
               href="#projects"
               data-cursor="pointer"
-              className="bg-[var(--accent-primary)] text-white font-body font-[500] py-3 px-8 rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_var(--accent-glow)] flex items-center gap-2"
+              className="bg-[var(--accent-primary)] text-white font-body font-[500] py-3 px-8 rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_var(--accent-glow)] flex items-center gap-2 text-sm md:text-base"
             >
-              View Projects →
+              View Projects <ArrowRight className="w-4 h-4" />
             </a>
             <a
               href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               data-cursor="pointer"
-              className="border border-white/20 text-[var(--text-primary)] font-body font-[500] py-3 px-8 rounded-full transition-all duration-300 hover:bg-white/5 hover:border-white/40"
+              className="border border-white/20 text-[var(--text-primary)] font-body font-[500] py-3 px-7 rounded-full transition-all duration-300 hover:bg-white/5 hover:border-white/40 flex items-center gap-2 text-sm md:text-base"
             >
-              Download Resume
+              <FileText className="w-4 h-4 text-[var(--accent-cyan)]" />
+              Resume
             </a>
+            <div className="flex items-center gap-2 pl-1">
+              <a
+                href="https://github.com/darknight08zz"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                data-cursor="pointer"
+                className="p-3 rounded-full border border-white/10 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-white/30 hover:bg-white/5 transition-all"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href="https://linkedin.com/in/ujjwal-prajapati"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                data-cursor="pointer"
+                className="p-3 rounded-full border border-white/10 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-white/30 hover:bg-white/5 transition-all"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
           </motion.div>
 
           {/* E. STATS ROW */}
@@ -145,12 +176,14 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 1.1 }}
-            className="flex items-center gap-8 md:gap-12"
+            className="grid grid-cols-2 sm:flex sm:items-center gap-6 sm:gap-8 md:gap-10"
           >
-            <Counter value="9.18" label="GPA" />
-            <div className="w-[1px] h-10 bg-white/10" />
-            <Counter value={200} label="DSA Solved" suffix="+" />
-            <div className="w-[1px] h-10 bg-white/10" />
+            <Counter value={900} label="LeetCode Solved" suffix="+" />
+            <div className="hidden sm:block w-[1px] h-10 bg-white/10" />
+            <Counter value={863} label="Active Streak" suffix="d" />
+            <div className="hidden sm:block w-[1px] h-10 bg-white/10" />
+            <Counter value="9.16" label="CGPA (XIM)" />
+            <div className="hidden sm:block w-[1px] h-10 bg-white/10" />
             <Counter value={10} label="Projects Built" suffix="+" />
           </motion.div>
         </motion.div>
@@ -182,23 +215,23 @@ export function Hero() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -bottom-4 -right-4 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-3"
           >
-            <div className="w-10 h-10 rounded-full bg-[var(--accent-primary)]/10 flex items-center justify-center text-[var(--accent-primary)]">
-              🚀
+            <div className="w-10 h-10 rounded-full bg-[var(--accent-primary)]/10 flex items-center justify-center text-[var(--accent-cyan)]">
+              <Code2 className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider">Current Focus</p>
-              <p className="text-xs font-display font-bold text-[var(--text-primary)]">Full-stack & AI</p>
+              <p className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider">Primary Stack</p>
+              <p className="text-xs font-display font-bold text-[var(--text-primary)]">React • Next.js • TS</p>
             </div>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* F. SCROLL INDICATOR */}
+      {/* G. SCROLL INDICATOR */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8, delay: 1.4 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-[max(5vw,2rem)] md:translate-x-0 flex items-center gap-4"
+        className="hidden md:flex absolute bottom-8 left-[max(5vw,2rem)] items-center gap-4"
       >
         <div className="relative flex flex-col items-center">
           <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest rotate-[-90deg] translate-x-[-20px] mb-4">
