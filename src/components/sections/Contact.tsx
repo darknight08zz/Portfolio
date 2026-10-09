@@ -53,7 +53,7 @@ export function Contact() {
               <span className="font-mono text-xs text-[var(--accent-primary)] tracking-[0.16em] uppercase">
                 05
               </span>
-              <span className="font-mono text-xs text-[var(--accent-secondary)] tracking-[0.16em] uppercase">
+              <span className="font-mono text-xs text-[var(--text-secondary)] tracking-[0.16em] uppercase font-medium">
                 GET IN TOUCH
               </span>
             </motion.div>
@@ -86,7 +86,7 @@ export function Contact() {
               {/* Email Pill Input */}
               <form 
                 onSubmit={handleSubmit}
-                className="relative flex items-center bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--accent-primary)]/60 focus-within:border-[var(--accent-primary)] rounded-full p-1.5 shadow-sm transition-all duration-200 w-full sm:w-[360px]"
+                className="relative flex items-center bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)] focus-within:border-[var(--border-hover)] rounded-full p-1.5 shadow-sm transition-all duration-200 w-full sm:w-[360px]"
               >
                 <div className="pl-3.5 pr-2 text-[var(--text-muted)]">
                   <Mail className="w-4 h-4" />
@@ -102,7 +102,7 @@ export function Contact() {
                 <button
                   type="submit"
                   aria-label="Submit email"
-                  className="w-9 h-9 rounded-full bg-[var(--accent-primary)] text-[#0B0D0E] flex items-center justify-center shrink-0 hover:bg-[var(--accent-secondary)] transition-colors"
+                  className="w-9 h-9 rounded-full bg-[var(--accent-primary)] text-[var(--bg-primary)] flex items-center justify-center shrink-0 hover:bg-white transition-colors"
                 >
                   {submitted ? <Check className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
                 </button>
@@ -115,7 +115,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub Profile"
-                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-highlight)] hover:border-[var(--accent-primary)]/50 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--border-hover)] flex items-center justify-center transition-colors"
                 >
                   <Github className="w-4 h-4" />
                 </a>
@@ -124,7 +124,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn Profile"
-                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-highlight)] hover:border-[var(--accent-primary)]/50 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--border-hover)] flex items-center justify-center transition-colors"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
@@ -133,7 +133,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Twitter / X Profile"
-                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-highlight)] hover:border-[var(--accent-primary)]/50 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--border-hover)] flex items-center justify-center transition-colors"
                 >
                   <Twitter className="w-4 h-4" />
                 </a>
@@ -147,11 +147,11 @@ export function Contact() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="font-serif italic text-3xl xl:text-4xl text-[var(--accent-secondary)] opacity-80 select-none tracking-wide text-right"
+              className="font-serif italic text-3xl xl:text-4xl text-[var(--text-secondary)] opacity-80 select-none tracking-wide text-right"
             >
               Open <br />
               <span className="pl-6">for new</span> <br />
-              <span className="pl-12 text-[var(--accent-primary)]">opportunities.</span>
+              <span className="pl-12 text-[var(--text-highlight)]">opportunities.</span>
             </motion.div>
           </div>
         </div>
@@ -159,13 +159,13 @@ export function Contact() {
         {/* Minimal Bottom Editorial Footer */}
         <div className="pt-8 border-t border-[var(--border-subtle)] flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
-            <span className="font-display font-[700] text-sm text-[var(--text-highlight)]">
+            <span className="bebas-neue-regular text-lg tracking-[0.06em] text-[var(--text-highlight)] uppercase">
               Ujjwal Prajapati
             </span>
             <span className="hidden sm:inline text-[var(--border-subtle)]">•</span>
             <a
               href="mailto:prajapatiu0802@gmail.com"
-              className="text-xs font-mono text-[var(--accent-secondary)] hover:text-[var(--accent-primary)] transition-colors flex items-center gap-1.5"
+              className="text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-highlight)] transition-colors flex items-center gap-1.5"
             >
               <Mail className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
               <span>prajapatiu0802@gmail.com</span>

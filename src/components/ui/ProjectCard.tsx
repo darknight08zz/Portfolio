@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Project } from '@/data/projects';
+import { Badge } from '@/components/ui/badge';
 
 export function ProjectCard({ project }: { project: Project }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -20,7 +21,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const rotateY = useTransform(mouseX, [-0.5, 0.5], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches)) return;
     const rect = cardRef.current.getBoundingClientRect();
     const mouseXPos = e.clientX - rect.left;
     const mouseYPos = e.clientY - rect.top;
@@ -34,10 +35,10 @@ export function ProjectCard({ project }: { project: Project }) {
     y.set(0);
   };
 
-  // Warm champagne spotlight
+  // Subtle monochrome spotlight
   const background = useTransform(
     [mouseX, mouseY],
-    ([xVal, yVal]) => `radial-gradient(circle at ${((xVal as number) + 0.5) * 100}% ${((yVal as number) + 0.5) * 100}%, rgba(215, 185, 138, 0.08) 0%, transparent 70%)`
+    ([xVal, yVal]) => `radial-gradient(circle at ${((xVal as number) + 0.5) * 100}% ${((yVal as number) + 0.5) * 100}%, rgba(255, 255, 255, 0.05) 0%, transparent 70%)`
   );
 
   const targetLink = project.links.live || project.links.github || '#';
@@ -77,6 +78,15 @@ export function ProjectCard({ project }: { project: Project }) {
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)]/40 via-transparent to-transparent pointer-events-none" />
+
+        {/* Engineering Stats Tag if present */}
+        {project.stats && (
+          <div className="absolute top-2.5 right-2.5 z-10">
+            <Badge variant="mono" className="bg-[var(--bg-primary)]/85 backdrop-blur-md">
+              {project.stats}
+            </Badge>
+          </div>
+        )}
       </div>
 
       {/* 2. Title & Action Row */}
@@ -84,7 +94,7 @@ export function ProjectCard({ project }: { project: Project }) {
         className="flex items-center justify-between gap-3 mb-2.5 relative z-10"
         style={{ transform: "translateZ(25px)" }}
       >
-        <h3 className="font-display font-[700] text-xl text-[var(--text-highlight)] group-hover:text-[var(--accent-secondary)] transition-colors">
+        <h3 className="font-display font-[700] text-xl text-[var(--text-highlight)] group-hover:text-white transition-colors">
           {project.title}
         </h3>
         
@@ -93,7 +103,7 @@ export function ProjectCard({ project }: { project: Project }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`View ${project.title}`}
-          className="w-8 h-8 rounded-full border border-[var(--border-subtle)] group-hover:border-[var(--accent-primary)] group-hover:bg-[var(--accent-primary)] group-hover:text-[#0B0D0E] flex items-center justify-center text-[var(--text-secondary)] transition-all duration-200"
+          className="w-8 h-8 rounded-full border border-[var(--border-subtle)] group-hover:border-[var(--accent-primary)] group-hover:bg-[var(--accent-primary)] group-hover:text-[var(--bg-primary)] flex items-center justify-center text-[var(--text-secondary)] transition-all duration-200"
         >
           <ArrowUpRight className="w-4 h-4" />
         </a>
@@ -107,18 +117,15 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.description}
       </p>
 
-      {/* 4. Tech Stack Pills (Monochrome & Neutral with clean border) */}
+      {/* 4. Tech Stack Pills (shadcn Badge) */}
       <div 
-        className="mt-auto pt-2 flex flex-wrap gap-2 relative z-10"
+        className="mt-auto pt-2 flex flex-wrap gap-1.5 relative z-10"
         style={{ transform: "translateZ(15px)" }}
       >
         {project.tags.slice(0, 4).map((tag) => (
-          <span
-            key={tag}
-            className="text-[11px] font-mono px-3 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-subtle)] text-[var(--text-secondary)] group-hover:border-[var(--border-hover)] transition-colors"
-          >
+          <Badge key={tag} variant="tag">
             {tag}
-          </span>
+          </Badge>
         ))}
       </div>
     </motion.div>

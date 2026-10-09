@@ -16,7 +16,7 @@ const educationData = [
     title: 'LeetCode',
     subtitle: 'Data Structures & Algorithms',
     year: 'Active Streak',
-    description: '900+ LeetCode problems solved with an 863-day active streak.',
+    description: '900+ LeetCode problems solved with an 800+ days active streak.',
   },
   {
     title: 'Harvard CS50x',

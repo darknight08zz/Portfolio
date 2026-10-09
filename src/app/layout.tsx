@@ -6,8 +6,6 @@ import CustomCursor from '@/components/ui/CustomCursor';
 import LenisProvider from '@/components/LenisProvider';
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
 import PageTransition from '@/components/PageTransition';
-import { AIChatbot } from '@/components/ui/ai-chatbot';
-import { LoadingScreen } from '@/components/ui/LoadingScreen';
 
 export const metadata: Metadata = {
   title: 'Ujjwal Prajapati — Software Engineer & Frontend Developer',
@@ -28,16 +26,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased selection:bg-[var(--accent-primary)] selection:text-[#0B0D0E]">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+      </head>
+      <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased selection:bg-[var(--accent-primary)] selection:text-[#09090B]">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange={false}
         >
-          {/* Minimal Editorial Preloader */}
-          <LoadingScreen />
-
           <LenisProvider>
             {/* Scroll Progress Bar */}
             <ScrollProgress />
@@ -54,9 +54,6 @@ export default function RootLayout({
                 {children}
               </PageTransition>
             </main>
-
-            {/* AI Assistant */}
-            <AIChatbot />
           </LenisProvider>
         </ThemeProvider>
       </body>

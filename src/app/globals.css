@@ -1,39 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Dark theme — default editorial charcoal & champagne */
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Dark theme — high-craft neutral zinc & crisp monochrome */
 :root,
 .dark {
-  --bg-primary: #0B0D0E;          /* near-black charcoal */
-  --bg-secondary: #111416;        /* graphite */
-  --bg-card: #181A1B;             /* elevated charcoal */
-  --bg-elevated: #232526;         /* warm graphite */
+  --bg-primary: #09090B;          /* deep obsidian zinc */
+  --bg-secondary: #121316;        /* graphite */
+  --bg-card: #18181B;             /* elevated zinc surface */
+  --bg-elevated: #27272A;         /* tactile zinc */
 
-  --accent-primary: #C5A574;      /* muted warm gold */
-  --accent-secondary: #D7B98A;    /* muted champagne */
-  --accent-tertiary: #B89568;     /* restrained bronze */
-  --accent-glow: rgba(215, 185, 138, 0.12); /* soft champagne glow */
-  --accent-cyan: #9EA7AA;         /* restrained desaturated slate */
-  --accent-warm: #D7B98A;
+  --accent-primary: #FAFAFA;      /* crisp white primary accent */
+  --accent-secondary: #E4E4E7;    /* refined zinc-200 */
+  --accent-tertiary: #A1A1AA;     /* zinc-400 */
+  --accent-glow: rgba(255, 255, 255, 0.06); /* subtle monochrome ambient */
+  --accent-cyan: #71717A;
+  --accent-warm: #D4D4D8;
 
-  --text-primary: #E8E2D8;        /* warm off-white */
-  --text-highlight: #F4EEE4;      /* ivory highlight */
-  --text-secondary: #A7A09A;      /* warm gray */
-  --text-muted: #68635E;          /* muted warm gray */
+  --text-primary: #F4F4F5;        /* crisp off-white */
+  --text-highlight: #FFFFFF;      /* pure white */
+  --text-secondary: #A1A1AA;      /* zinc-400 */
+  --text-muted: #71717A;          /* zinc-500 */
 
-  --border-subtle: rgba(232, 226, 216, 0.08);
-  --border-hover: rgba(215, 185, 138, 0.28);
+  --border-subtle: rgba(255, 255, 255, 0.08); /* razor hairline */
+  --border-hover: rgba(255, 255, 255, 0.22);
 
-  --nav-bg: rgba(11, 13, 14, 0.88);
-  --card-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5);
+  --nav-bg: rgba(9, 9, 11, 0.85);
+  --card-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.6);
 
   /* Typography */
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'Outfit', sans-serif;
-  --font-mono: 'DM Mono', monospace;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-bebas: 'Bebas Neue', sans-serif;
 
   /* Spacing */
   --section-padding: clamp(5rem, 11vw, 9rem);
@@ -45,30 +52,30 @@
   --z-cursor: 9999;
 }
 
-/* Light theme — architectural warm ivory, stone, and bronze */
+/* Light theme — architectural crisp zinc & stone */
 .light {
-  --bg-primary: #F5F1E9;          /* warm ivory */
-  --bg-secondary: #ECE7DE;        /* soft stone */
-  --bg-card: #FFFFFF;             /* crisp white */
-  --bg-elevated: #DED8CF;         /* warm light gray */
+  --bg-primary: #FAFAFA;          /* crisp light zinc */
+  --bg-secondary: #F4F4F5;        /* soft light surface */
+  --bg-card: #FFFFFF;             /* pure white card */
+  --bg-elevated: #E4E4E7;         /* zinc light gray */
 
-  --accent-primary: #B89568;      /* restrained bronze */
-  --accent-secondary: #C5A574;    /* muted warm gold */
-  --accent-tertiary: #D7B98A;     /* champagne */
-  --accent-glow: rgba(197, 165, 116, 0.14);
-  --accent-cyan: #737A7D;         /* restrained slate */
-  --accent-warm: #B89568;
+  --accent-primary: #18181B;      /* deep black/zinc primary */
+  --accent-secondary: #27272A;    /* zinc-800 */
+  --accent-tertiary: #52525B;     /* zinc-600 */
+  --accent-glow: rgba(0, 0, 0, 0.06);
+  --accent-cyan: #71717A;
+  --accent-warm: #3F3F46;
 
-  --text-primary: #1B1B1A;        /* charcoal */
-  --text-highlight: #0D0E0E;      /* deep charcoal */
-  --text-secondary: #5E5A55;      /* secondary text */
-  --text-muted: #8E8880;          /* muted gray */
+  --text-primary: #18181B;        /* deep zinc text */
+  --text-highlight: #09090B;      /* pure black headline */
+  --text-secondary: #52525B;      /* zinc-600 */
+  --text-muted: #71717A;          /* zinc-500 */
 
-  --border-subtle: rgba(27, 27, 26, 0.08);
-  --border-hover: rgba(184, 149, 104, 0.35);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.24);
 
-  --nav-bg: rgba(245, 241, 233, 0.88);
-  --card-shadow: 0 8px 30px -4px rgba(27, 27, 26, 0.06);
+  --nav-bg: rgba(250, 250, 250, 0.85);
+  --card-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.06);
 }
 
 /* Smooth theme transition */
@@ -139,6 +146,18 @@ h1, h2, h3, h4 {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
+}
+
+.text-mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.border-hairline {
+  border: 1px solid var(--border-subtle);
 }
 
 /* Editorial accent gradient text */

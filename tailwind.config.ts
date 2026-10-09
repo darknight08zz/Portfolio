@@ -11,9 +11,10 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        body: ['Outfit', 'sans-serif'],
-        mono: ['DM Mono', 'monospace'],
+        display: ['var(--font-display)', 'Space Grotesk', 'sans-serif'],
+        body: ['var(--font-body)', 'Inter', 'sans-serif'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
+        bebas: ['var(--font-bebas)', '"Bebas Neue"', 'sans-serif'],
       },
       colors: {
         accent: {

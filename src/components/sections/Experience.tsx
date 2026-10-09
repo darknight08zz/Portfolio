@@ -52,18 +52,18 @@ export function Experience() {
     <section ref={ref} id="experience" className="py-20 md:py-28 bg-[var(--bg-primary)] border-t border-[var(--border-subtle)]">
       <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-4xl">
         
-        {/* Editorial Section Header Matching Reference */}
+        {/* Editorial Section Header */}
         <div className="mb-14">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="flex items-center gap-2 mb-2"
+            className="flex items-center gap-2 mb-3"
           >
-            <span className="font-mono text-xs text-[var(--accent-primary)] tracking-[0.16em] uppercase">
-              04
+            <span className="font-mono text-xs text-[var(--text-muted)] tracking-[0.16em] uppercase">
+              [04] //
             </span>
-            <span className="font-mono text-xs text-[var(--accent-secondary)] tracking-[0.16em] uppercase">
-              EXPERIENCE
+            <span className="font-mono text-xs text-[var(--text-secondary)] tracking-[0.16em] uppercase font-medium">
+              BACKGROUND &amp; MILESTONES
             </span>
           </motion.div>
 
@@ -71,9 +71,9 @@ export function Experience() {
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-heading text-[var(--text-highlight)] font-[800]"
+            className="text-heading text-[var(--text-highlight)] font-[800] tracking-tight"
           >
-            My journey so far
+            Engineering journey &amp; education.
           </motion.h2>
         </div>
 

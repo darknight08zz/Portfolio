@@ -70,9 +70,10 @@ The visual language is **editorial, minimal, technical, cinematic, and sophistic
   - `--card-shadow`: `0 8px 30px -4px rgba(27, 27, 26, 0.06)`
 
 #### Typography Hierarchy
-- **Display**: `Syne` (`font-display`, weights 700–800) with tight letter spacing (`-0.035em`) for editorial headlines.
-- **Body**: `Outfit` (`font-body`, weights 300–500) for comfortable, readable narrative copy.
-- **Monospace**: `DM Mono` (`font-mono`, weights 300–500) for section tags, metadata, dates, and technical telemetry.
+- **Brand / Headline Display**: `Bebas Neue` (`.bebas-neue-regular`, `font-bebas`, weight 400) for monumental, editorial all-caps brand signature (*Ujjwal Prajapati*).
+- **Display**: `Space Grotesk` (`font-display`, weights 600–700) with tight letter spacing (`-0.035em`) for punchy, modern geometric section headlines.
+- **Body**: `Inter` (`font-body`, weights 300–500) for comfortable, neutral, highly legible reading copy.
+- **Monospace**: `JetBrains Mono` (`font-mono`, weights 400–600) for section tags, metadata, dates, and technical telemetry.
 - **Fluid Scaling**: Fluid headings using `clamp()` rules (`.text-display`, `.text-heading`, `--section-padding`).
 
 ---
@@ -93,7 +94,7 @@ The visual language is **editorial, minimal, technical, cinematic, and sophistic
 
 - **`LoadingScreen.tsx`**: Editorial preloader with smooth progress counter (0–100%), minimal line indicator, and elegant unmount.
 - **`Navbar.tsx`**: Editorial top bar with brand mark, section anchor links, theme toggle, and resume trigger.
-- **`Hero.tsx`**: Lead engineering positioning, 4-metric evidence row (900+ LeetCode, 863d Streak, 9.16 CGPA, 10+ Projects), CTAs, and 3D layered workstation depth visual.
+- **`Hero.tsx`**: Lead engineering positioning, 4-metric evidence row (900+ LeetCode, 800+ Days Streak, 9.16 CGPA, 10+ Projects), CTAs, and 3D layered workstation depth visual.
 - **`About.tsx`**: Narrative bio, final-year student status, architectural avatar card, and verified highlight chips.
 - **`Projects.tsx` & `ProjectCard.tsx`**: Category-filtered showcases with primary order: 1. CrowdShield, 2. NetSentinel, 3. VTRACE. 3D card tilt with champagne cursor spotlight.
 - **`Skills.tsx`**: 6 categorized engineering competency cards (`Languages`, `Frontend`, `Backend & APIs`, `Databases`, `Tools & Platforms`, `Core Engineering`).
@@ -115,11 +116,23 @@ The visual language is **editorial, minimal, technical, cinematic, and sophistic
 ### Visual Correction Architecture & Reference Alignment
 
 1. **Editorial Sequence**:
-   - `Hero`: Personal intro "Hi, I'm Ujjwal Prajapati — Building scalable, high-performance web products.", availability status "● OPEN TO FULL-TIME & INTERNSHIP OPPORTUNITIES", filled champagne CTA ("View My Work →"), secondary "Download Resume", 4 stats (900+ LeetCode, 863 Days Active Streak, 9.16 CGPA, 10+ Projects Completed), and 3D architectural portrait frame featuring Ujjwal's photo (`/Ujjwal_Profile_photo.jpeg`).
+   - `Hero`: Personal intro "Hi, I'm Ujjwal Prajapati — Building scalable, high-performance web products.", availability status "● OPEN TO FULL-TIME & INTERNSHIP OPPORTUNITIES", filled champagne CTA ("View My Work →"), secondary "Download Resume", 4 stats (900+ LeetCode, 800+ Days Active Streak, 9.16 CGPA, 10+ Projects Completed), and 3D architectural portrait frame featuring Ujjwal's photo (`/Ujjwal_Profile_photo.jpeg`).
    - `01 / FEATURED PROJECTS`: 3-card featured showcase (CrowdShield, NetSentinel, VTRACE) and full project grid with dedicated domain-specific 16:9 previews for each project (MarketMind, FraudShield, FinPath, SynaptiScan, OMR, Earthquake; fMRI project commented out). Circular `↗` button, verified descriptions, and tech badges. Zero image duplication across projects.
    - `02 / ABOUT ME & 03 / SKILLS`: 2-column side-by-side block. Left: "Turning ideas into real solutions." + narrative + desk image (`/about-developer.jpg`). Right: "Technologies I work with" grouped into 5 strategic engineering tiers (01 Core Engineering, 02 Frontend, 03 Backend & APIs, 04 Data, 05 Languages & Tools) with tailored icons.
    - `04 / EXPERIENCE`: "My journey so far" with vertical line and golden circular nodes (PixScript Technologies, Freelance Frontend Developer, B.Tech CSE @ XIM University).
    - `05 / GET IN TOUCH`: "Let's build something useful." supported by concise availability statement ("Currently open to full-time software engineering and frontend development opportunities, as well as relevant internships."), email pill input, social channels, curved horizon backdrop (`/contact-horizon.jpg`) with "Open for new opportunities.", and minimal footer bar.
 2. **Clean Architecture**: Legacy blog routes (`/blog`, `/admin`, `/api/posts`, `BlogPreview.tsx`) and deprecated layout headers/sidebars have been removed.
-3. **Design Tokens**: Restrained Charcoal (`#0B0D0E`, `#111416`, `#181A1B`, `#232526`), Ivory highlight (`#F4EEE4`), Warm champagne/gold (`#D7B98A`, `#C5A574`, `#B89568`). Light mode uses architectural warm stone (`#F5F1E9`, `#ECE7DE`, `#FFFFFF`).
+3. **Design Tokens**: Vibrant High-Craft Monochrome Zinc (`#09090B`, `#121316`, `#18181B`, `#27272A`), Crisp White highlight (`#FFFFFF`), Refined Zinc text (`#F4F4F5`, `#A1A1AA`, `#71717A`), and Hairline borders (`rgba(255, 255, 255, 0.08)`). Light mode uses crisp architectural zinc and stone (`#FAFAFA`, `#F4F4F5`, `#FFFFFF`, `#18181B`).
+4. **Anti-AI Craft Overhaul**: Removed mock AI chatbot (`<AIChatbot />`) and artificial loading screen (`<LoadingScreen />`). Replaced generic stock imagery (`/about-developer.jpg`) with an interactive `engineer_spec.ts` verification card. Restored the user-preferred Contact design featuring `/contact-horizon.jpg` background, interactive email form pill, and cursive script accent ("Open for new opportunities.").
+5. **shadcn UI Architecture**: Integrated official shadcn component system configured via `components.json`, powered by `class-variance-authority`, `@radix-ui/react-slot`, and `@radix-ui/react-tabs`. Added standard primitives:
+   - `Button` (`@/components/ui/button`): Multi-variant (default, secondary, outline, ghost, pill, pillOutline).
+   - `Badge` (`@/components/ui/badge`): Variants (default, secondary, outline, mono, tag, active).
+   - `Card` (`@/components/ui/card`): Full Card family (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter).
+   - `Tabs` (`@/components/ui/tabs`): Integrated into `Projects.tsx` for real-time category filtering (All, AI & ML, Systems & Vision, Fullstack, Research).
+   - `Separator` (`@/components/ui/separator`): Hairline dividers.
+6. **Cross-Device Responsiveness**:
+   - `Hero.tsx`: Dynamic headline scaling (`clamp(2.4rem, 6.2vw, 5.5rem)`) keeping *UJJWAL PRAJAPATI* on a unified, high-impact line without awkward mid-name breaks on mobile or desktop.
+   - Preserved above-the-fold vertical rhythm on standard laptop screens (768px–900px height) and mobile viewports with tight vertical padding (`pt-24 lg:pt-24 pb-12 lg:pb-10`).
+   - Stats row formatted with `whitespace-nowrap` so values like `800+ Days` remain on a single line with zero text truncation.
+   - Touch guards (`window.matchMedia('(pointer: coarse)')`) active on 3D tilt tracking in `Hero.tsx` and `ProjectCard.tsx` to ensure frictionless mobile scrolling.
 

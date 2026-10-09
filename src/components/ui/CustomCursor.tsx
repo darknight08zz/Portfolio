@@ -93,8 +93,8 @@ const CustomCursor = () => {
           opacity: isVisible ? 1 : 0,
           width: cursorType === 'text' ? 2 : cursorType === 'pointer' ? 56 : 32,
           height: cursorType === 'text' ? 24 : cursorType === 'pointer' ? 56 : 32,
-          backgroundColor: cursorType === 'pointer' ? 'rgba(215, 185, 138, 0.15)' : 'rgba(215, 185, 138, 0)',
-          borderColor: cursorType === 'text' ? 'rgba(215, 185, 138, 1)' : cursorType === 'pointer' ? 'rgba(215, 185, 138, 0.65)' : 'rgba(232, 226, 216, 0.4)',
+          backgroundColor: cursorType === 'pointer' ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0)',
+          borderColor: cursorType === 'text' ? 'rgba(255, 255, 255, 0.9)' : cursorType === 'pointer' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 255, 255, 0.25)',
           borderRadius: cursorType === 'text' ? '1px' : '50%',
         }}
         transition={{ type: 'spring', damping: 22, stiffness: 210 }}

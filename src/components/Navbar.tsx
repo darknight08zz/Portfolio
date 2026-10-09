@@ -57,7 +57,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto h-full px-6 md:px-10 flex items-center justify-between">
         {/* Brand / Logo */}
         <Link href="#home" className="group flex items-center gap-2">
-          <span className="font-display font-[700] text-base md:text-lg tracking-tight text-[var(--text-highlight)] group-hover:text-[var(--accent-secondary)] transition-colors">
+          <span className="bebas-neue-regular text-xl sm:text-2xl md:text-3xl tracking-[0.06em] text-[var(--text-highlight)] group-hover:text-[var(--accent-secondary)] transition-colors uppercase whitespace-nowrap">
             Ujjwal Prajapati
           </span>
         </Link>
@@ -156,7 +156,7 @@ const Navbar = () => {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center w-full font-body text-sm font-semibold py-3 border border-[var(--accent-primary)] bg-[var(--accent-primary)] text-[#0B0D0E] rounded-full shadow-sm"
+                className="block text-center w-full font-body text-sm font-semibold py-3 border border-[var(--accent-primary)] bg-[var(--accent-primary)] text-[var(--bg-primary)] rounded-full shadow-sm"
               >
                 Download Resume ↓
               </a>

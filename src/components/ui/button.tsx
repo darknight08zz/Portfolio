@@ -1,28 +1,53 @@
 import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'outline' | 'ghost';
-  size?: 'default' | 'sm' | 'lg' | 'icon';
+const buttonVariants = cva(
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-400 disabled:pointer-events-none disabled:opacity-50 cursor-pointer',
+  {
+    variants: {
+      variant: {
+        default:
+          'bg-[var(--accent-primary)] text-[var(--bg-primary)] hover:bg-white shadow-sm font-semibold',
+        secondary:
+          'bg-[var(--bg-card)] text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)]',
+        outline:
+          'border border-[var(--border-subtle)] bg-transparent hover:bg-[var(--bg-card)] text-[var(--text-primary)] hover:border-[var(--border-hover)]',
+        ghost:
+          'hover:bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-highlight)]',
+        link: 'text-[var(--text-primary)] underline-offset-4 hover:underline',
+        pill: 'rounded-full bg-[var(--accent-primary)] text-[var(--bg-primary)] hover:bg-white font-semibold shadow-sm',
+        pillOutline:
+          'rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-primary)] hover:border-[var(--border-hover)] hover:text-white',
+      },
+      size: {
+        default: 'h-10 px-5 py-2 text-sm',
+        sm: 'h-8 rounded-md px-3 text-xs',
+        lg: 'h-11 rounded-md px-8 text-base',
+        pill: 'h-10 px-6 py-2 text-xs md:text-sm',
+        icon: 'h-9 w-9 rounded-full',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default',
+    },
+  }
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'default', size = 'default', asChild, ...props }, ref) => {
-    const base = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background';
-    const variants = {
-      default: 'bg-blue-600 text-white hover:bg-blue-700',
-      outline: 'border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20',
-      ghost: 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300',
-    };
-    const sizes = {
-      default: 'h-10 px-4 py-2',
-      sm: 'h-8 px-3 text-sm',
-      lg: 'h-12 px-8 text-lg',
-      icon: 'h-10 w-10 p-0',
-    };
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : 'button';
     return (
-      <button
-        className={`${base} ${variants[variant]} ${sizes[size]} ${className || ''}`}
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />
@@ -30,4 +55,5 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 Button.displayName = 'Button';
-export { Button };
+
+export { Button, buttonVariants };

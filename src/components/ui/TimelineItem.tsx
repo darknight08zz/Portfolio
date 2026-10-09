@@ -45,14 +45,14 @@ export const TimelineItem = ({
         <div className="absolute left-[17px] md:left-[21px] top-6 bottom-0 w-[1px] bg-[var(--border-subtle)]" />
       )}
 
-      {/* Golden Circular Node with Icon */}
+      {/* Minimal Node with Icon */}
       <motion.div
         initial={{ scale: 0 }}
         animate={inView ? { scale: 1 } : {}}
         transition={{ duration: 0.35, ease: 'backOut' }}
-        className="absolute left-0 top-1 w-9 h-9 md:w-10 md:h-10 rounded-full bg-[var(--bg-card)] border-2 border-[var(--accent-primary)]/80 flex items-center justify-center text-[var(--accent-primary)] shadow-md z-10"
+        className="absolute left-0 top-1 w-9 h-9 md:w-10 md:h-10 rounded-full bg-[var(--bg-card)] border border-[var(--border-hover)] flex items-center justify-center text-[var(--text-primary)] shadow-md z-10"
       >
-        {icon || <Circle className="w-3.5 h-3.5 fill-[var(--accent-primary)]" />}
+        {icon || <Circle className="w-3.5 h-3.5 fill-[var(--text-primary)]" />}
       </motion.div>
 
       {/* Content Block */}
@@ -67,7 +67,7 @@ export const TimelineItem = ({
           <h3 className="font-display font-[700] text-lg md:text-xl text-[var(--text-highlight)]">
             {title}
           </h3>
-          <span className="font-mono text-xs text-[var(--accent-secondary)] tracking-wider">
+          <span className="font-mono text-xs text-[var(--text-muted)] tracking-wider">
             {displayDate}
           </span>
         </div>

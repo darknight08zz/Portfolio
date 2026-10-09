@@ -62,7 +62,7 @@ export function LoadingScreen() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.1 }}
-              className="font-display font-[700] text-xl md:text-2xl tracking-tight text-[var(--text-highlight)]"
+              className="bebas-neue-regular text-2xl md:text-3xl tracking-[0.06em] text-[var(--text-highlight)] uppercase"
             >
               Ujjwal Prajapati
             </motion.h2>

@@ -21,7 +21,7 @@ const Footer = () => {
         
         {/* Row 1: Brand & Nav Links */}
         <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-[var(--border-subtle)]">
-          <Link href="#home" className="font-display font-[700] text-lg tracking-tight text-[var(--text-highlight)] hover:text-[var(--accent-secondary)] transition-colors">
+          <Link href="#home" className="bebas-neue-regular text-2xl tracking-[0.06em] text-[var(--text-highlight)] hover:text-[var(--accent-secondary)] transition-colors uppercase">
             UJJWAL PRAJAPATI
           </Link>
           <div className="flex flex-wrap justify-center gap-6 sm:gap-8">

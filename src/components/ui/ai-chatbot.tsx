@@ -38,7 +38,7 @@ export function AIChatbot() {
     'experience': "Currently a final-year B.Tech CSE student at XIM University with hands-on software development and frontend engineering experience. Skilled in React, Next.js, TypeScript, building scalable web applications, and algorithmic problem solving.",
     'contact': "You can reach Ujjwal at: Email: prajapatiu0802@gmail.com. GitHub: github.com/darknight08zz. LinkedIn: linkedin.com/in/ujjwal-prajapati-34b44b285. He's always open to new grad opportunities, software engineering roles, and collaborations!",
     'ai': "Ujjwal is very interested in AI and has worked with TensorFlow, PyTorch, OpenCV, and built projects like CrowdShield (real-time crowd safety platform) and NetSentinel (deep learning NIDS).",
-    'education': "Ujjwal is a final-year B.Tech CSE student at XIM University. He's a Merit Scholar with a 9.16 CGPA, has solved 900+ LeetCode problems with an 863-day active streak, and is CS50x certified.",
+    'education': "Ujjwal is a final-year B.Tech CSE student at XIM University. He's a Merit Scholar with a 9.16 CGPA, has solved 900+ LeetCode problems with an 800+ days active streak, and is CS50x certified.",
   };
 
   const getResponse = (userMessage: string): string => {

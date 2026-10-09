@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useReveal } from '@/hooks/useReveal';
+import { Badge } from '@/components/ui/badge';
 import { 
   GitBranch, 
   Binary, 
@@ -254,12 +255,12 @@ export function Skills() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="flex items-center gap-2 mb-2"
+          className="flex items-center gap-2 mb-3"
         >
-          <span className="font-mono text-xs text-[var(--accent-primary)] tracking-[0.16em] uppercase">
-            03
+          <span className="font-mono text-xs text-[var(--text-muted)] tracking-[0.16em] uppercase">
+            [03] //
           </span>
-          <span className="font-mono text-xs text-[var(--accent-secondary)] tracking-[0.16em] uppercase">
+          <span className="font-mono text-xs text-[var(--text-secondary)] tracking-[0.16em] uppercase font-medium">
             SKILLS &amp; CAPABILITIES
           </span>
         </motion.div>
@@ -268,46 +269,46 @@ export function Skills() {
           initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}
-          className="text-heading text-[var(--text-highlight)] font-[800] leading-tight mb-6"
+          className="text-heading text-[var(--text-highlight)] font-[800] leading-tight mb-6 tracking-tight"
         >
-          Technologies I work with
+          Technical competencies.
         </motion.h2>
       </div>
 
       {/* 5 Grouped Rows: Core Engineering, Frontend, Backend & APIs, Data, Languages & Tools */}
-      <div className="space-y-3.5 my-auto">
+      <div className="space-y-3 my-auto">
         {skillTiers.map((tier, idx) => (
           <motion.div
             key={tier.title}
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: idx * 0.07 + 0.12 }}
-            className="flex flex-col sm:flex-row sm:items-start gap-2.5 sm:gap-3 p-3 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)] transition-all duration-200"
+            className="flex flex-col sm:flex-row sm:items-start gap-2.5 sm:gap-3 p-3.5 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)] transition-all duration-200"
           >
             {/* Category Pill Tag */}
             <div className="w-full sm:w-36 shrink-0 pt-1">
-              <span className="text-[11px] font-mono text-[var(--accent-secondary)] uppercase tracking-wider font-medium flex items-center gap-1.5">
-                <span className="text-[10px] text-[var(--accent-primary)] font-bold">{tier.number}</span>
-                <span className="text-[var(--border-subtle)]">—</span>
+              <span className="text-[11px] font-mono text-[var(--text-secondary)] uppercase tracking-wider font-medium flex items-center gap-1.5">
+                <span className="text-[10px] text-[var(--text-muted)] font-bold">{tier.number}</span>
+                <span className="text-[var(--border-subtle)]">//</span>
                 <span>{tier.title}</span>
               </span>
             </div>
 
-            {/* Tech Item Pills in Row */}
+            {/* Tech Item Pills in Row (shadcn Badge) */}
             <div className="flex flex-wrap items-center gap-1.5">
               {tier.items.map((item) => (
-                <div
+                <Badge
                   key={item.name}
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--accent-primary)]/40 transition-colors shadow-sm select-none"
-
->
+                  variant="tag"
+                  className="gap-1.5 py-1 px-3 bg-[var(--bg-secondary)] hover:bg-[var(--bg-elevated)]"
+                >
                   <span className="shrink-0 flex items-center justify-center">
                     {item.icon}
                   </span>
                   <span className="text-xs font-body font-medium text-[var(--text-primary)]">
                     {item.name}
                   </span>
-                </div>
+                </Badge>
               ))}
             </div>
           </motion.div>
