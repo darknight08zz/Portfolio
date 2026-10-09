@@ -81,7 +81,7 @@ export function Hero() {
             </span>
             <Badge variant="active" className="gap-1.5 py-0.5 px-2.5 text-[10px] sm:text-[11px]">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>AVAILABLE FOR 2026/2027 ROLES</span>
+              <span>OPEN TO FULL-TIME &amp; INTERNSHIP OPPORTUNITIES</span>
             </Badge>
           </motion.div>
 
