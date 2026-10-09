@@ -36,7 +36,7 @@ export function AIChatbot() {
     'projects': "Ujjwal has worked on several impressive projects including: 1) Automated OMR Evaluation System using OpenCV, 2) ASL Alphabet Recognition with TensorFlow, 3) DSA Visualizer for learning algorithms, 4) Unauth Billboard - an anonymous campus platform, 5) XIMConnect - a campus networking platform, and 6) Earthquake Data Analysis using Python and Pandas.",
     'skills': "Ujjwal's main skills include: Frontend: React, TypeScript, Tailwind CSS, Framer Motion. Backend: Node.js, Express.js, MongoDB, PostgreSQL. AI & Data: TensorFlow, OpenCV, Pandas, NumPy. He has 2+ years of experience and has solved 200+ DSA problems.",
     'experience': "Currently a final-year B.Tech CSE student at XIM University with hands-on software development and frontend engineering experience. Skilled in React, Next.js, TypeScript, building scalable web applications, and algorithmic problem solving.",
-    'contact': "You can reach Ujjwal at: Email: prajapatiujjwal0802@gmail.com. GitHub: github.com/darknight08zz. LinkedIn: linkedin.com/in/ujjwal-prajapati-34b44b285. He's always open to new grad opportunities, software engineering roles, and collaborations!",
+    'contact': "You can reach Ujjwal at: Email: prajapatiu0802@gmail.com. GitHub: github.com/darknight08zz. LinkedIn: linkedin.com/in/ujjwal-prajapati-34b44b285. He's always open to new grad opportunities, software engineering roles, and collaborations!",
     'ai': "Ujjwal is very interested in AI and has worked with TensorFlow, PyTorch, OpenCV, and built projects like CrowdShield (real-time crowd safety platform) and NetSentinel (deep learning NIDS).",
     'education': "Ujjwal is a final-year B.Tech CSE student at XIM University. He's a Merit Scholar with a 9.16 CGPA, has solved 900+ LeetCode problems with an 863-day active streak, and is CS50x certified.",
   };
@@ -91,11 +91,11 @@ export function AIChatbot() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-[9999] w-14 h-14 rounded-full bg-gradient-to-br from-violet-600 to-purple-500 flex items-center justify-center shadow-xl shadow-violet-500/40 hover:scale-110 transition-transform duration-200 cursor-pointer group"
+        className="fixed bottom-6 right-6 z-[9999] w-13 h-13 rounded-full bg-[var(--accent-primary)] text-[#0B0D0E] flex items-center justify-center shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer group"
         aria-label="Open AI assistant"
       >
-        <MessageCircle className="h-6 w-6 text-white group-hover:scale-125 transition-transform" />
-        <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+        <MessageCircle className="h-6 w-6 group-hover:scale-110 transition-transform" />
+        <div className="absolute bottom-0 right-0 w-3 h-3 bg-[var(--accent-warm)] rounded-full ring-2 ring-[var(--bg-primary)]"></div>
       </button>
     );
   }
@@ -103,16 +103,16 @@ export function AIChatbot() {
   return (
     <div className="fixed bottom-6 right-6 z-[9999] w-[90vw] md:w-96 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl shadow-2xl flex flex-col h-[500px] overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-violet-600 to-purple-500 p-4 flex justify-between items-center text-white">
+      <div className="bg-[var(--bg-secondary)] border-b border-[var(--border-subtle)] p-4 flex justify-between items-center text-[var(--text-highlight)]">
         <div>
-          <h3 className="font-semibold text-lg">AI Assistant</h3>
-          <p className="text-xs opacity-90">Ujjwal's Portfolio Bot</p>
+          <h3 className="font-display font-semibold text-base">Engineering Assistant</h3>
+          <p className="text-[11px] font-mono text-[var(--text-muted)]">Portfolio Knowledge Base</p>
         </div>
         <button
           onClick={() => setIsOpen(false)}
-          className="p-2 rounded-lg hover:bg-white/20 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-[var(--bg-card)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
         >
-          <X className="h-5 w-5" />
+          <X className="h-4 w-4" />
         </button>
       </div>
 
@@ -124,9 +124,9 @@ export function AIChatbot() {
             className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[80%] px-4 py-3 rounded-lg text-sm leading-relaxed ${
+              className={`max-w-[80%] px-4 py-2.5 rounded-xl text-sm leading-relaxed ${
                 msg.sender === 'user'
-                  ? 'bg-violet-600 text-white rounded-br-none'
+                  ? 'bg-[var(--accent-primary)] text-[#0B0D0E] font-medium rounded-br-none'
                   : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-subtle)] rounded-bl-none'
               }`}
             >
@@ -136,7 +136,7 @@ export function AIChatbot() {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-[var(--bg-card)] border border-[var(--border-subtle)] px-4 py-3 rounded-lg rounded-bl-none">
+            <div className="bg-[var(--bg-card)] border border-[var(--border-subtle)] px-4 py-3 rounded-xl rounded-bl-none">
               <div className="flex space-x-2">
                 <div className="w-2 h-2 bg-[var(--text-muted)] rounded-full animate-bounce"></div>
                 <div className="w-2 h-2 bg-[var(--text-muted)] rounded-full animate-bounce delay-100"></div>
@@ -149,26 +149,26 @@ export function AIChatbot() {
       </div>
 
       {/* Input */}
-      <div className="p-4 border-t border-[var(--border-subtle)] bg-[var(--bg-card)]">
+      <div className="p-3 border-t border-[var(--border-subtle)] bg-[var(--bg-card)]">
         <div className="flex gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="Ask about projects, skills..."
-            className="flex-1 px-4 py-2 border border-[var(--border-subtle)] rounded-lg bg-[var(--bg-elevated)] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all"
+            placeholder="Ask about projects, stack, background..."
+            className="flex-1 px-3.5 py-2 border border-[var(--border-subtle)] rounded-lg bg-[var(--bg-secondary)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-all"
             disabled={isLoading}
           />
           <button
             onClick={handleSend}
             disabled={isLoading || !input.trim()}
-            className="p-2 bg-gradient-to-br from-violet-600 to-purple-500 text-white rounded-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="p-2 bg-[var(--accent-primary)] text-[#0B0D0E] rounded-lg hover:bg-[var(--accent-secondary)] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {isLoading ? (
-              <Loader className="h-5 w-5 animate-spin" />
+              <Loader className="h-4 w-4 animate-spin" />
             ) : (
-              <Send className="h-5 w-5" />
+              <Send className="h-4 w-4" />
             )}
           </button>
         </div>

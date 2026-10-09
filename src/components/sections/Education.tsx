@@ -22,7 +22,7 @@ const educationData = [
     title: 'Harvard CS50x',
     subtitle: 'Computer Science Certificate',
     year: '2024',
-    description: 'Comprehensive introduction to the intellectual enterprises of computer science and the art of programming.',
+    description: 'Comprehensive introduction to computer science and programming fundamentals.',
   },
   {
     title: 'Technova Hackathon',
@@ -34,7 +34,7 @@ const educationData = [
     title: 'AI Automate Hackathon',
     subtitle: 'FraudShield AI Project',
     year: '2026',
-    description: 'Developed a real-time fraud detection system with high precision scoring.',
+    description: 'Developed a real-time fraud detection platform with high precision scoring.',
   },
 ];
 
@@ -42,24 +42,25 @@ export function Education() {
   const { ref, inView } = useReveal();
 
   return (
-    <section ref={ref} id="education" className="py-[var(--section-padding)] bg-[var(--bg-secondary)]">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <section ref={ref} id="education" className="py-[var(--section-padding)] bg-[var(--bg-primary)] border-t border-[var(--border-subtle)]">
+      <div className="container mx-auto px-6 max-w-4xl">
         
-        {/* Header */}
-        <div className="mb-16 text-center md:text-left">
+        {/* Editorial Section Header */}
+        <div className="mb-14 text-center md:text-left">
           <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase mb-4 block"
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            className="font-mono text-[11px] text-[var(--accent-secondary)] tracking-[0.16em] uppercase mb-3 block"
           >
-            [Academics & Milestones]
+            [ 05 / ACADEMIC CREDENTIALS & ACHIEVEMENTS ]
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-heading text-[var(--text-primary)]"
+            transition={{ delay: 0.1 }}
+            className="text-heading text-[var(--text-highlight)]"
           >
-            Education & Achievements
+            Education & Milestones
           </motion.h2>
         </div>
 

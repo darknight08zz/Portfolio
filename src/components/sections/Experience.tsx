@@ -2,22 +2,46 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Briefcase, Code, GraduationCap } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 import { TimelineItem } from '@/components/ui/TimelineItem';
 
-const experienceData = [
+const journeyItems = [
   {
-    title: 'PixScripti Technologies',
-    subtitle: 'Software Development Intern',
-    year: 'May 2026 – June 2026',
-    description: 'Contributed to SaaS application development and modular feature engineering. Built responsive user interfaces, integrated RESTful APIs, and implemented client-side state management to deliver scalable product workflows.',
-    link: { url: '/PixScripti_Ujjwal_Internship_Completion_Certificate.pdf', label: 'Completion Certificate' },
+    icon: <Briefcase className="w-4 h-4 md:w-5 md:h-5" />,
+    title: 'Software Engineering Intern',
+    subtitle: 'PixScript Technologies',
+    date: 'May 2026 – Jun 2026',
+    bullets: [
+      'Optimized API integrations and global state management.',
+      'Improved performance and fixed UI/UX issues.',
+      'Collaborated in agile sprints using Git/GitHub.',
+    ],
+    link: {
+      url: '/PixScripti_Ujjwal_Internship_Completion_Certificate.pdf',
+      label: 'Internship Certificate',
+    },
   },
   {
-    title: 'IEEE XIM CS Student Branch',
-    subtitle: 'Webmaster & Treasurer',
-    year: '2024–2025',
-    description: 'Engineered and maintained web platforms for the student branch while directing digital infrastructure and event operations across university tech fests, contributing to chapter recognition as Best Student Chapter.',
+    icon: <Code className="w-4 h-4 md:w-5 md:h-5" />,
+    title: 'Frontend Developer (Freelance)',
+    subtitle: 'Independent Engineering',
+    date: 'Jan 2024 – Present',
+    bullets: [
+      'Building modern web applications for clients worldwide.',
+      'Working with Next.js, React, and modern tools.',
+      'Focused on performance and user experience.',
+    ],
+  },
+  {
+    icon: <GraduationCap className="w-4 h-4 md:w-5 md:h-5" />,
+    title: 'B.Tech in Computer Science',
+    subtitle: 'XIM University, Bhubaneswar',
+    date: '2023 – 2027',
+    bullets: [
+      'Current CGPA: 9.16 (Merit Scholarship Recipient).',
+      'Actively involved in IEEE XIM CS Student Branch as Webmaster & Treasurer.',
+    ],
   },
 ];
 
@@ -25,34 +49,41 @@ export function Experience() {
   const { ref, inView } = useReveal();
 
   return (
-    <section ref={ref} id="experience" className="py-[var(--section-padding)] bg-[var(--bg-primary)]">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <section ref={ref} id="experience" className="py-20 md:py-28 bg-[var(--bg-primary)] border-t border-[var(--border-subtle)]">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-4xl">
         
-        {/* Header */}
-        <div className="mb-16 text-center md:text-left">
-          <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase mb-4 block"
-          >
-            [Work Experience]
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+        {/* Editorial Section Header Matching Reference */}
+        <div className="mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-heading text-[var(--text-primary)]"
+            className="flex items-center gap-2 mb-2"
           >
-            Experience
+            <span className="font-mono text-xs text-[var(--accent-primary)] tracking-[0.16em] uppercase">
+              04
+            </span>
+            <span className="font-mono text-xs text-[var(--accent-secondary)] tracking-[0.16em] uppercase">
+              EXPERIENCE
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.1 }}
+            className="text-heading text-[var(--text-highlight)] font-[800]"
+          >
+            My journey so far
           </motion.h2>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {experienceData.map((item, index) => (
-            <TimelineItem 
-              key={item.title} 
-              {...item} 
-              isLast={index === experienceData.length - 1} 
+        {/* Refined Vertical Timeline */}
+        <div className="relative mt-8">
+          {journeyItems.map((item, index) => (
+            <TimelineItem
+              key={item.title}
+              {...item}
+              isLast={index === journeyItems.length - 1}
             />
           ))}
         </div>

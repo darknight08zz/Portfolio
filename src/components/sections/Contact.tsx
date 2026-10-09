@@ -2,155 +2,193 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, MapPin, Send } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Twitter, Mail, Check } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 
 export function Contact() {
   const { ref, inView } = useReveal();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Message sent! I'll get back to you soon.");
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    if (!email) return;
+    setSubmitted(true);
+    window.location.href = `mailto:prajapatiu0802@gmail.com?subject=Contact from Portfolio&body=Hello Ujjwal, my email is ${encodeURIComponent(email)}`;
+    setTimeout(() => setSubmitted(false), 4000);
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail className="w-[18px] h-[18px] text-[var(--accent-secondary)]" />,
-      label: 'prajapatiujjwal0802@gmail.com',
-      href: 'mailto:prajapatiujjwal0802@gmail.com',
-    },
-    {
-      icon: <Github className="w-[18px] h-[18px] text-[var(--accent-secondary)]" />,
-      label: 'github.com/darknight08zz',
-      href: 'https://github.com/darknight08zz',
-    },
-    {
-      icon: <Linkedin className="w-[18px] h-[18px] text-[var(--accent-secondary)]" />,
-      label: 'linkedin.com/in/ujjwal-prajapati-34b44b285',
-      href: 'https://www.linkedin.com/in/ujjwal-prajapati-34b44b285/',
-    },
-    {
-      icon: <MapPin className="w-[18px] h-[18px] text-[var(--accent-secondary)]" />,
-      label: 'Bhubaneswar, Odisha, India',
-      href: null,
-    },
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <section ref={ref} id="contact" className="py-[var(--section-padding)] bg-[var(--bg-primary)]">
-      <div className="container mx-auto px-4">
-        
-        {/* Header */}
-        <div className="mb-16 text-center md:text-left">
-          <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase mb-4 block"
-          >
-            [Get In Touch]
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-heading text-[var(--text-primary)] max-w-2xl"
-          >
-            Let's build something extraordinary.
-          </motion.h2>
-        </div>
+    <footer ref={ref} id="contact" className="relative pt-24 pb-12 bg-[var(--bg-secondary)] border-t border-[var(--border-subtle)] overflow-hidden">
+      
+      {/* Background Curved Horizon Visual */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-luminosity">
+        <img
+          src="/contact-horizon.jpg"
+          alt="Curved Horizon"
+          className="w-full h-full object-cover object-bottom"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-secondary)] via-[var(--bg-secondary)]/80 to-transparent" />
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12">
+      <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-12 mb-20">
           
-          {/* LEFT: Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-          >
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl py-3 px-4 text-[var(--text-primary)] font-body font-[300] focus:outline-none focus:border-[var(--accent-primary)]/50 transition-colors"
-                />
+          {/* LEFT: Editorial Heading & Input */}
+          <div className="max-w-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              className="flex items-center gap-2 mb-2"
+            >
+              <span className="font-mono text-xs text-[var(--accent-primary)] tracking-[0.16em] uppercase">
+                05
+              </span>
+              <span className="font-mono text-xs text-[var(--accent-secondary)] tracking-[0.16em] uppercase">
+                GET IN TOUCH
+              </span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 14 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.1 }}
+              className="text-heading text-[var(--text-highlight)] font-[800] leading-tight mb-4"
+            >
+              Let&apos;s build something useful.
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2 }}
+              className="font-body font-[300] text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-8"
+            >
+              Currently open to full-time software engineering and frontend development opportunities, as well as relevant internships.
+            </motion.p>
+
+            {/* Interactive Email Pill + Social Icons Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+              className="flex flex-wrap items-center gap-4"
+            >
+              {/* Email Pill Input */}
+              <form 
+                onSubmit={handleSubmit}
+                className="relative flex items-center bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--accent-primary)]/60 focus-within:border-[var(--accent-primary)] rounded-full p-1.5 shadow-sm transition-all duration-200 w-full sm:w-[360px]"
+              >
+                <div className="pl-3.5 pr-2 text-[var(--text-muted)]">
+                  <Mail className="w-4 h-4" />
+                </div>
                 <input
                   type="email"
-                  placeholder="your@email.com"
                   required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl py-3 px-4 text-[var(--text-primary)] font-body font-[300] focus:outline-none focus:border-[var(--accent-primary)]/50 transition-colors"
+                  placeholder="your.email@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-transparent text-xs sm:text-sm font-body text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none"
                 />
-              </div>
-              <input
-                type="text"
-                placeholder="Project Inquiry / Internship / Collaboration"
-                required
-                value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                className="w-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl py-3 px-4 text-[var(--text-primary)] font-body font-[300] focus:outline-none focus:border-[var(--accent-primary)]/50 transition-colors"
-              />
-              <textarea
-                placeholder="Tell me about your project..."
-                rows={5}
-                required
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl py-3 px-4 text-[var(--text-primary)] font-body font-[300] focus:outline-none focus:border-[var(--accent-primary)]/50 transition-colors resize-none"
-              />
-              <button
-                type="submit"
-                data-cursor="pointer"
-                className="w-full bg-[var(--accent-primary)] text-white font-display font-[500] py-3 rounded-xl hover:shadow-[0_0_20px_var(--accent-glow)] transition-all flex items-center justify-center gap-2"
-              >
-                Send Message <Send className="w-4 h-4" />
-              </button>
-            </form>
-          </motion.div>
-
-          {/* RIGHT: Contact Info */}
-          <div className="space-y-4">
-            {contactInfo.map((info, idx) => {
-              const Content = (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-xl p-4 flex items-center gap-3 hover:border-[var(--accent-primary)]/40 transition-colors"
+                <button
+                  type="submit"
+                  aria-label="Submit email"
+                  className="w-9 h-9 rounded-full bg-[var(--accent-primary)] text-[#0B0D0E] flex items-center justify-center shrink-0 hover:bg-[var(--accent-secondary)] transition-colors"
                 >
-                  {info.icon}
-                  <span className="font-body font-[300] text-[var(--text-secondary)] text-sm">
-                    {info.label}
-                  </span>
-                </motion.div>
-              );
+                  {submitted ? <Check className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+                </button>
+              </form>
 
-              return info.href ? (
-                <a 
-                  key={idx} 
-                  href={info.href} 
-                  target={info.href.startsWith('http') ? '_blank' : undefined}
-                  className="block"
+              {/* Social Channels */}
+              <div className="flex items-center gap-2.5">
+                <a
+                  href="https://github.com/darknight08zz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-highlight)] hover:border-[var(--accent-primary)]/50 flex items-center justify-center transition-colors"
                 >
-                  {Content}
+                  <Github className="w-4 h-4" />
                 </a>
-              ) : (
-                <div key={idx}>{Content}</div>
-              );
-            })}
+                <a
+                  href="https://www.linkedin.com/in/ujjwal-prajapati-34b44b285/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-highlight)] hover:border-[var(--accent-primary)]/50 flex items-center justify-center transition-colors"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter / X Profile"
+                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-highlight)] hover:border-[var(--accent-primary)]/50 flex items-center justify-center transition-colors"
+                >
+                  <Twitter className="w-4 h-4" />
+                </a>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* RIGHT: Floating Cursive Script Accent */}
+          <div className="hidden lg:flex items-center justify-center pr-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="font-serif italic text-3xl xl:text-4xl text-[var(--accent-secondary)] opacity-80 select-none tracking-wide text-right"
+            >
+              Open <br />
+              <span className="pl-6">for new</span> <br />
+              <span className="pl-12 text-[var(--accent-primary)]">opportunities.</span>
+            </motion.div>
           </div>
         </div>
+
+        {/* Minimal Bottom Editorial Footer */}
+        <div className="pt-8 border-t border-[var(--border-subtle)] flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            <span className="font-display font-[700] text-sm text-[var(--text-highlight)]">
+              Ujjwal Prajapati
+            </span>
+            <span className="hidden sm:inline text-[var(--border-subtle)]">•</span>
+            <a
+              href="mailto:prajapatiu0802@gmail.com"
+              className="text-xs font-mono text-[var(--accent-secondary)] hover:text-[var(--accent-primary)] transition-colors flex items-center gap-1.5"
+            >
+              <Mail className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
+              <span>prajapatiu0802@gmail.com</span>
+            </a>
+          </div>
+
+          <nav className="flex flex-wrap items-center justify-center gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-xs font-body text-[var(--text-muted)] hover:text-[var(--text-highlight)] transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          <span className="text-[11px] font-mono text-[var(--text-muted)]">
+            © 2026 Ujjwal Prajapati. All rights reserved.
+          </span>
+        </div>
       </div>
-    </section>
+    </footer>
   );
 }

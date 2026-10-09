@@ -17,16 +17,23 @@ const config: Config = {
       },
       colors: {
         accent: {
-          primary: '#7c3aed',
-          secondary: '#a855f7',
-          cyan: '#22d3ee',
-          warm: '#f59e0b',
+          primary: '#C5A574',    // muted warm gold
+          secondary: '#D7B98A',  // muted champagne
+          tertiary: '#B89568',   // restrained bronze
+          cyan: '#9EA7AA',       // restrained slate
+          warm: '#D7B98A',
         },
         dark: {
-          primary: '#0a0a0a',
-          secondary: '#111111',
-          card: '#141414',
-          elevated: '#1a1a1a',
+          primary: '#0B0D0E',    // near-black charcoal
+          secondary: '#111416',  // graphite
+          card: '#181A1B',       // elevated charcoal
+          elevated: '#232526',   // warm graphite
+        },
+        light: {
+          primary: '#F5F1E9',    // warm ivory
+          secondary: '#ECE7DE',  // soft stone
+          card: '#FFFFFF',       // crisp white
+          elevated: '#DED8CF',   // warm light gray
         },
       },
       animation: {
@@ -45,12 +52,12 @@ const config: Config = {
           to: { opacity: '1' },
         },
         glowPulse: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(124, 58, 237, 0.25)' },
-          '50%': { boxShadow: '0 0 50px rgba(124, 58, 237, 0.5)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(215, 185, 138, 0.12)' },
+          '50%': { boxShadow: '0 0 35px rgba(215, 185, 138, 0.22)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-12px)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
       },
     },

@@ -6,6 +6,7 @@ export interface Project {
   category: 'ai' | 'fullstack' | 'systems' | 'research';
   year: string;
   highlight?: boolean;
+  image?: string;
   links: {
     github?: string;
     live?: string;
@@ -17,33 +18,36 @@ export const projects: Project[] = [
   {
     id: 'crowdshield',
     title: 'CrowdShield',
-    description: 'Architected a real-time crowd safety platform pairing YOLOv8 detection and OpenCV optical flow with temporal risk intelligence to forecast bottleneck hazards. Broadcasts spatial telemetry via FastAPI WebSockets to a Next.js command dashboard, backed by sensor failover logic and a 299-test verified safety suite.',
-    tags: ['YOLOv8', 'FastAPI', 'Next.js', 'OpenCV', 'WebSockets', 'Pytest'],
+    description: 'Real-time crowd safety management with predictive anomaly detection, operator dashboard and field response sync.',
+    tags: ['React Native', 'Next.js', 'FastAPI'],
     category: 'ai',
     year: '2026',
     highlight: true,
+    image: '/projects/crowdshield.jpg',
     links: { github: 'https://github.com/darknight08zz/Crowdshield-AI' },
     stats: '299/299 Tests Passed',
   },
   {
     id: 'netsentinel',
     title: 'NetSentinel',
-    description: 'Engineered a real-time Network Intrusion Detection System coupling an unsupervised deep learning fusion pipeline (PyTorch Autoencoders + Isolation Forests) with Random Forest threat triage. Streams ~50 flows/sec via FastAPI WebSockets to an interactive D3.js force-directed topology graph, backed by asynchronous MongoDB telemetry persistence.',
-    tags: ['PyTorch', 'FastAPI', 'D3.js', 'WebSockets', 'MongoDB', 'Docker'],
+    description: 'Network security monitoring and threat detection with real-time analysis and visualization.',
+    tags: ['React', 'Node.js', 'MongoDB'],
     category: 'systems',
     year: '2025',
     highlight: true,
+    image: '/projects/netsentinel.jpg',
     links: { github: 'https://github.com/darknight08zz/NetSentinal' },
     stats: 'Deep Learning NIDS',
   },
   {
     id: 'vtrace',
     title: 'VTRACE',
-    description: 'Developed an interactive algorithm exploration platform using Next.js App Router, TypeScript, and Framer Motion. Built a deterministic execution engine with bidirectional stepping and synchronized pseudocode tracing to visualize self-balancing AVL Trees, Trie prefix trees, Heaps, and comparative side-by-side sorting algorithms.',
-    tags: ['Next.js', 'TypeScript', 'Framer Motion', 'Radix UI', 'Tailwind'],
+    description: 'Interactive DSA visualizer with animated explanations for arrays, trees, graphs and more.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
     category: 'fullstack',
     year: '2024',
     highlight: true,
+    image: '/projects/vtrace.jpg',
     links: { github: 'https://github.com/darknight08zz/AlgoVisu' },
     stats: 'Interactive DSA Suite',
   },
@@ -54,6 +58,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Gemini API', 'Python', 'Backtesting', 'BSE Data'],
     category: 'ai',
     year: '2026',
+    image: '/projects/marketmind.jpg',
     links: { github: 'https://github.com/darknight08zz' },
     stats: 'ET Markets Hackathon',
   },
@@ -64,6 +69,7 @@ export const projects: Project[] = [
     tags: ['XGBoost', 'SHAP', 'FastAPI', 'Kafka', 'MLflow'],
     category: 'ai',
     year: '2026',
+    image: '/projects/fraudshield.jpg',
     links: { github: 'https://github.com/darknight08zz' },
     stats: 'AI Automate Hackathon',
   },
@@ -74,6 +80,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind'],
     category: 'fullstack',
     year: '2024',
+    image: '/projects/finpath.jpg',
     links: { github: 'https://github.com/darknight08zz/FinPath' },
   },
   {
@@ -83,18 +90,20 @@ export const projects: Project[] = [
     tags: ['FastAPI', 'React 19', 'Ensemble ML', 'SMOTE', 'OpenCV'],
     category: 'ai',
     year: '2025',
+    image: '/projects/synaptiscan.jpg',
     links: { github: 'https://github.com/darknight08zz' },
   },
-  {
-    id: 'fmri',
-    title: 'fMRI Preprocessing Pipeline',
-    description: 'Web-based SPM12-equivalent rs-fMRI pipeline for Alzheimer\'s research (ADNI). Steps: DICOM→NIfTI, STC, Realignment, Coregistration, Segmentation, Normalisation, Smoothing + 3D NiftiViewer.',
-    tags: ['Python', 'Next.js', 'NIfTI', 'Neuroimaging', 'SPM12'],
-    category: 'research',
-    year: '2025',
-    links: { github: 'https://github.com/darknight08zz' },
-    stats: 'ADNI Dataset',
-  },
+  // {
+  //   id: 'fmri',
+  //   title: 'fMRI Preprocessing Pipeline',
+  //   description: 'Web-based SPM12-equivalent rs-fMRI pipeline for Alzheimer\'s research (ADNI). Steps: DICOM→NIfTI, STC, Realignment, Coregistration, Segmentation, Normalisation, Smoothing + 3D NiftiViewer.',
+  //   tags: ['Python', 'Next.js', 'NIfTI', 'Neuroimaging', 'SPM12'],
+  //   category: 'research',
+  //   year: '2025',
+  //   image: '/projects/fmri.jpg',
+  //   links: { github: 'https://github.com/darknight08zz' },
+  //   stats: 'ADNI Dataset',
+  // },
   {
     id: 'omr',
     title: 'Automated OMR System',
@@ -102,6 +111,7 @@ export const projects: Project[] = [
     tags: ['OpenCV', 'Python', 'Computer Vision'],
     category: 'systems',
     year: '2024',
+    image: '/projects/omr.jpg',
     links: { github: 'https://github.com/darknight08zz/OMR' },
   },
   {
@@ -111,6 +121,7 @@ export const projects: Project[] = [
     tags: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
     category: 'research',
     year: '2024',
+    image: '/projects/earthquake.jpg',
     links: { github: 'https://github.com/darknight08zz/Earthquake-Data-Analysis' },
   },
 ];

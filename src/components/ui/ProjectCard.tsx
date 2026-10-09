@@ -2,42 +2,31 @@
 
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import { Project } from '@/data/projects';
-import { Github, ExternalLink, Star } from 'lucide-react';
-
-const categoryColors = {
-  ai: 'text-violet-400 bg-violet-400/10',
-  fullstack: 'text-cyan-400 bg-cyan-400/10',
-  systems: 'text-amber-400 bg-amber-400/10',
-  research: 'text-teal-400 bg-teal-400/10',
-};
 
 export function ProjectCard({ project }: { project: Project }) {
   const cardRef = useRef<HTMLDivElement>(null);
   
-  // Mouse position for tilt
+  // Mouse position for subtle 3D physical tilt
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   
-  // Smooth out the motion
-  const mouseX = useSpring(x, { stiffness: 150, damping: 20 });
-  const mouseY = useSpring(y, { stiffness: 150, damping: 20 });
+  const mouseX = useSpring(x, { stiffness: 140, damping: 20 });
+  const mouseY = useSpring(y, { stiffness: 140, damping: 20 });
 
-  // Map mouse position to rotation values
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], [10, -10]);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
+  // Restrained physical tilt: -5deg to +5deg
+  const rotateX = useTransform(mouseY, [-0.5, 0.5], [5, -5]);
+  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-5, 5]);
 
-  // Handle mouse move
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
     const mouseXPos = e.clientX - rect.left;
     const mouseYPos = e.clientY - rect.top;
     
-    x.set(mouseXPos / width - 0.5);
-    y.set(mouseYPos / height - 0.5);
+    x.set(mouseXPos / rect.width - 0.5);
+    y.set(mouseYPos / rect.height - 0.5);
   };
 
   const handleMouseLeave = () => {
@@ -45,10 +34,13 @@ export function ProjectCard({ project }: { project: Project }) {
     y.set(0);
   };
 
+  // Warm champagne spotlight
   const background = useTransform(
     [mouseX, mouseY],
-    ([x, y]) => `radial-gradient(circle at ${((x as number) + 0.5) * 100}% ${((y as number) + 0.5) * 100}%, rgba(124,58,237,0.08) 0%, transparent 80%)`
+    ([xVal, yVal]) => `radial-gradient(circle at ${((xVal as number) + 0.5) * 100}% ${((yVal as number) + 0.5) * 100}%, rgba(215, 185, 138, 0.08) 0%, transparent 70%)`
   );
+
+  const targetLink = project.links.live || project.links.github || '#';
 
   return (
     <motion.div
@@ -60,84 +52,74 @@ export function ProjectCard({ project }: { project: Project }) {
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="group relative bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl p-6 transition-all duration-500 hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_30px_var(--accent-glow)] flex flex-col h-full overflow-hidden"
+      className="group relative bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)] rounded-2xl p-4 md:p-5 transition-all duration-300 hover:shadow-2xl flex flex-col h-full overflow-hidden"
     >
-      {/* Animated Mouse Following Gradient Overlay */}
+      {/* Animated Subtle Cursor Spotlight */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{ background }}
       />
 
-      {/* TOP ROW: Category & Year */}
-      <div className="flex justify-between items-center mb-4 relative z-10" style={{ transform: "translateZ(20px)" }}>
-        <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider ${categoryColors[project.category]}`}>
-          {project.category}
-        </span>
-        <span className="font-mono text-[11px] text-[var(--text-muted)]">
-          {project.year}
-        </span>
+      {/* 1. Large 16:9 Media Preview */}
+      <div 
+        className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-5 bg-[var(--bg-secondary)] border border-[var(--border-subtle)]"
+        style={{ transform: "translateZ(15px)" }}
+      >
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-elevated)] flex items-center justify-center font-mono text-xs text-[var(--text-muted)]">
+            {project.title}
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)]/40 via-transparent to-transparent pointer-events-none" />
       </div>
 
-      {/* MIDDLE: Title */}
-      <div className="mb-3 relative z-10" style={{ transform: "translateZ(30px)" }}>
-        <h3 className="font-display font-[600] text-xl text-[var(--text-primary)] flex items-center gap-2">
-          {project.highlight && <Star className="w-4 h-4 text-[var(--accent-warm)] fill-[var(--accent-warm)]" />}
+      {/* 2. Title & Action Row */}
+      <div 
+        className="flex items-center justify-between gap-3 mb-2.5 relative z-10"
+        style={{ transform: "translateZ(25px)" }}
+      >
+        <h3 className="font-display font-[700] text-xl text-[var(--text-highlight)] group-hover:text-[var(--accent-secondary)] transition-colors">
           {project.title}
         </h3>
-      </div>
-
-      {/* BODY: Description */}
-      <div className="mb-4 flex-grow relative z-10" style={{ transform: "translateZ(15px)" }}>
-        <p className="font-body font-[300] text-[var(--text-secondary)] text-sm line-clamp-3 leading-relaxed">
-          {project.description}
-        </p>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 pt-4">
-          {project.tags.slice(0, 3).map((tag) => (
-            <span 
-              key={tag}
-              className="text-[10px] font-mono px-2 py-0.5 rounded-sm bg-white/5 border border-white/10 text-[var(--text-muted)]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Footer / Links */}
-      <div className="mt-auto pt-6 flex items-center justify-between border-t border-[var(--border-subtle)] relative z-10" style={{ transform: "translateZ(40px)" }}>
-        <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest">
-          {project.year}
-        </span>
         
-        <div className="flex items-center gap-4">
-          {project.links.github && (
-            <a 
-              href={project.links.github}
-              target="_blank"
-              data-cursor="pointer"
-              className="flex items-center gap-2 text-[11px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-            >
-              <Github className="w-3.5 h-3.5" />
-              CODE
-            </a>
-          )}
-          {project.links.live && (
-            <a 
-              href={project.links.live}
-              target="_blank"
-              data-cursor="pointer"
-              className="flex items-center gap-2 text-[11px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-              LIVE
-            </a>
-          )}
-        </div>
+        <a
+          href={targetLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View ${project.title}`}
+          className="w-8 h-8 rounded-full border border-[var(--border-subtle)] group-hover:border-[var(--accent-primary)] group-hover:bg-[var(--accent-primary)] group-hover:text-[#0B0D0E] flex items-center justify-center text-[var(--text-secondary)] transition-all duration-200"
+        >
+          <ArrowUpRight className="w-4 h-4" />
+        </a>
+      </div>
+
+      {/* 3. Concrete Technical Description */}
+      <p 
+        className="font-body font-[300] text-sm text-[var(--text-secondary)] leading-relaxed mb-6 line-clamp-3 relative z-10"
+        style={{ transform: "translateZ(10px)" }}
+      >
+        {project.description}
+      </p>
+
+      {/* 4. Tech Stack Pills (Monochrome & Neutral with clean border) */}
+      <div 
+        className="mt-auto pt-2 flex flex-wrap gap-2 relative z-10"
+        style={{ transform: "translateZ(15px)" }}
+      >
+        {project.tags.slice(0, 4).map((tag) => (
+          <span
+            key={tag}
+            className="text-[11px] font-mono px-3 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-subtle)] text-[var(--text-secondary)] group-hover:border-[var(--border-hover)] transition-colors"
+          >
+            {tag}
+          </span>
+        ))}
       </div>
     </motion.div>
   );

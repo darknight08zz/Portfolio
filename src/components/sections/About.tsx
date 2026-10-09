@@ -2,133 +2,79 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 
 export function About() {
   const { ref, inView } = useReveal();
 
   return (
-    <section ref={ref} id="about" className="py-[var(--section-padding)] bg-[var(--bg-primary)]">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          {/* LEFT COLUMN: Visual Avatar Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="flex justify-center lg:justify-start"
+    <div ref={ref} id="about" className="h-full flex flex-col justify-between">
+      {/* Top Header & Copy */}
+      <div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          className="flex items-center gap-2 mb-2"
+        >
+          <span className="font-mono text-xs text-[var(--accent-primary)] tracking-[0.16em] uppercase">
+            02
+          </span>
+          <span className="font-mono text-xs text-[var(--accent-secondary)] tracking-[0.16em] uppercase">
+            ABOUT ME
+          </span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1 }}
+          className="text-heading text-[var(--text-highlight)] font-[800] leading-tight mb-4"
+        >
+          Turning ideas <br />
+          <span>into real solutions.</span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="font-body font-[300] text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-6 max-w-xl"
+        >
+          I&apos;m a Computer Science student with a strong interest in frontend development and software engineering. I enjoy building modern web applications, solving complex problems and learning new technologies.
+        </motion.p>
+
+        {/* Pill Action Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.3 }}
+          className="mb-8"
+        >
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 text-xs font-body font-medium py-2.5 px-6 rounded-full border border-[var(--border-subtle)] hover:border-[var(--accent-primary)] bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:text-[var(--accent-secondary)] transition-all duration-200"
           >
-            <div className="relative group">
-              {/* Animated Gradient Border Overlay */}
-              <div className="absolute -inset-[2px] rounded-2xl bg-[conic-gradient(from_0deg,var(--accent-primary),var(--accent-cyan),var(--accent-primary))] animate-[spin_4s_linear_infinite] opacity-30 group-hover:opacity-60 transition-opacity blur-[2px]" />
-              
-              {/* Card Content */}
-              <div className="relative w-[340px] h-[420px] bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl p-8 flex flex-col items-center justify-between overflow-hidden">
-                
-                {/* Profile Image Container */}
-                <div className="relative w-full aspect-square mb-6 overflow-hidden rounded-xl border border-white/10 group-hover:border-[var(--accent-primary)]/30 transition-colors duration-500">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full"
-                  >
-                    <img
-                      src="/Ujjwal_Profile_photo.jpeg"
-                      alt="Ujjwal Prajapati"
-                      className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
-                    />
-                  </motion.div>
-                  {/* Glass Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)]/40 to-transparent pointer-events-none" />
-                </div>
-
-                {/* Status Pill */}
-                <div className="mb-6 flex items-center gap-3 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                  </span>
-                  <span className="text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wider">
-                    Available for Internship / Full-time
-                  </span>
-                </div>
-
-                {/* Social Icons */}
-                <div className="flex items-center gap-6 pb-2">
-                  <a href="https://github.com/darknight08zz" target="_blank" data-cursor="pointer" className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <a href="https://www.linkedin.com/in/ujjwal-prajapati-34b44b285/" target="_blank" data-cursor="pointer" className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a href="mailto:prajapatiujjwal0802@gmail.com" data-cursor="pointer" className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">
-                    <Mail className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT COLUMN: Content */}
-          <div className="flex flex-col">
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase mb-4"
-            >
-              [About Me]
-            </motion.span>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 }}
-              className="font-display font-[700] text-4xl md:text-5xl text-[var(--text-primary)] mb-8 leading-tight"
-            >
-              Merging creativity with <br /> 
-              <span className="text-[var(--accent-primary)]">engineering precision.</span>
-            </motion.h2>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 }}
-              className="space-y-6 mb-10"
-            >
-              <p className="font-body font-[300] text-[var(--text-secondary)] text-lg leading-relaxed">
-                I'm a final-year B.Tech CSE student at XIM University (CGPA 9.16 | Merit Scholar) building full-stack web applications and AI/ML systems. My work spans React/Next.js frontends, Python-based ML pipelines, and neuroimaging research tools.
-              </p>
-              <p className="font-body font-[300] text-[var(--text-secondary)] text-lg leading-relaxed">
-                I've competed in multiple national hackathons — 2nd Runner-Up at Technova Hackathon — and shipped projects ranging from real-time fraud detection to fMRI preprocessing pipelines. I thrive at the intersection of engineering rigor and product thinking.
-              </p>
-            </motion.div>
-
-            {/* Highlights Chips */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.5 }}
-              className="flex flex-wrap gap-3"
-            >
-              {[
-                "9.16 CGPA",
-                "Merit Scholar",
-                "Technova 2nd Runner-Up",
-                "CS50x Certified"
-              ].map((chip) => (
-                <span 
-                  key={chip}
-                  className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[11px] font-mono text-[var(--text-secondary)]"
-                >
-                  {chip}
-                </span>
-              ))}
-            </motion.div>
-          </div>
-        </div>
+            <span>More About Me</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
+          </a>
+        </motion.div>
       </div>
-    </section>
+
+      {/* Developer at Dual Monitors Photographic Visual */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={inView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ delay: 0.35, duration: 0.6 }}
+        className="w-full aspect-[16/10] relative rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-lg group"
+      >
+        <img
+          src="/about-developer.jpg"
+          alt="Developer working at desk"
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/50 via-transparent to-transparent pointer-events-none" />
+      </motion.div>
+    </div>
   );
 }

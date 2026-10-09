@@ -1,252 +1,248 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, animate } from 'framer-motion';
-import { ArrowRight, Code2, FileText, Github, Linkedin } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { ArrowRight, Download, Sparkles } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
-
-const Counter = ({ value, label, suffix = "" }: { value: number | string, label: string, suffix?: string }) => {
-  const { ref, inView } = useReveal();
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { damping: 30, stiffness: 100 });
-  
-  const numericValue = typeof value === 'string' ? parseFloat(value.replace(/[^0-9.]/g, '')) : value;
-  const isFloat = typeof value === 'string' ? value.includes('.') : false;
-
-  useEffect(() => {
-    if (inView) {
-      animate(motionValue, numericValue, { duration: 2, ease: "easeOut" });
-    }
-  }, [inView, motionValue, numericValue]);
-
-  const displayValue = useTransform(springValue, (latest) => {
-    if (isFloat) return latest.toFixed(2).toString();
-    return Math.floor(latest).toString();
-  });
-
-  return (
-    <div ref={ref} className="flex flex-col">
-      <div className="flex items-baseline gap-1">
-        <motion.span className="font-display font-[700] text-3xl md:text-4xl text-[var(--text-primary)]">
-          {displayValue}
-        </motion.span>
-        <span className="font-display font-[700] text-xl md:text-2xl text-[var(--text-primary)]">{suffix}</span>
-      </div>
-      <span className="font-mono text-[11px] text-[var(--text-muted)] uppercase tracking-wider mt-1">
-        {label}
-      </span>
-    </div>
-  );
-};
 
 export function Hero() {
   const { ref, inView } = useReveal();
+  const visualRef = useRef<HTMLDivElement>(null);
+
+  // Subtle 3D mouse tracking for the portrait visual
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 120, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 120, damping: 20 });
+
+  const rotateX = useTransform(springY, [-0.5, 0.5], [6, -6]);
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-6, 6]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!visualRef.current) return;
+    const rect = visualRef.current.getBoundingClientRect();
+    const xPos = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPos = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(xPos);
+    mouseY.set(yPos);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  const stats = [
+    { value: '900+', label: 'LeetCode Problems' },
+    { value: '863 Days', label: 'Active Streak' },
+    { value: '9.16', label: 'CGPA (Merit Scholar)' },
+    { value: '10+', label: 'Projects Completed' },
+  ];
 
   return (
-    <section ref={ref} id="home" className="relative min-h-[100svh] w-full overflow-hidden flex flex-col justify-center items-start bg-[var(--bg-primary)] px-[max(5vw,2rem)] py-20 lg:py-0">
-      
-      {/* LAYER 1: Background Grid */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
-
-      {/* LAYER 2: Gradient Orbs */}
+    <section 
+      ref={ref} 
+      id="home" 
+      className="relative min-h-[100svh] w-full overflow-hidden flex flex-col justify-center items-start bg-[var(--bg-primary)] px-6 md:px-12 lg:px-16 pt-36 pb-16 lg:pt-24 lg:pb-12"
+    >
+      {/* Subtle Warm Atmospheric Glows */}
       <div 
-        className="absolute top-[10%] right-[10%] w-[600px] h-[600px] rounded-full pointer-events-none z-0 blur-[120px] animate-float"
-        style={{ background: 'radial-gradient(circle, var(--accent-primary) 0%, transparent 70%)', opacity: 0.15 }}
+        className="absolute top-[12%] right-[10%] w-[550px] h-[550px] rounded-full pointer-events-none z-0 blur-[150px] opacity-25"
+        style={{ background: 'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)' }}
       />
       <div 
-        className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] rounded-full pointer-events-none z-0 blur-[100px] animate-float"
-        style={{ background: 'radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%)', opacity: 0.08, animationDelay: '2s' }}
+        className="absolute bottom-[8%] left-[5%] w-[450px] h-[450px] rounded-full pointer-events-none z-0 blur-[130px] opacity-15"
+        style={{ background: 'radial-gradient(circle, var(--border-hover) 0%, transparent 70%)' }}
       />
 
-      {/* LAYER 3: Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-14 my-auto">
+        
+        {/* LEFT COLUMN: Personal Introduction */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl"
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-start text-left w-full lg:max-w-[620px]"
         >
-          
-          {/* A. EYEBROW LINE */}
+          {/* Eyebrow Label: Role & Availability Status */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-6"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex flex-col gap-2 mb-6"
           >
-            <span className="font-mono text-[0.75rem] text-[var(--accent-cyan)] tracking-[0.15em] uppercase border border-[var(--accent-cyan)]/25 px-3.5 py-1.5 rounded-full bg-[var(--accent-cyan)]/5">
-              [ Software Engineer & Frontend Developer ]
+            <span className="font-mono text-[11px] md:text-xs text-[var(--text-muted)] tracking-[0.18em] uppercase font-medium">
+              SOFTWARE ENGINEER · FRONTEND DEVELOPER
             </span>
+            <div className="inline-flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
+              <span className="font-mono text-[10px] md:text-[11px] text-[var(--accent-secondary)] tracking-[0.16em] uppercase font-medium">
+                OPEN TO FULL-TIME &amp; INTERNSHIP OPPORTUNITIES
+              </span>
+            </div>
           </motion.div>
 
-          {/* B. MAIN HEADING */}
-          <div className="mb-6">
-            <motion.h1 
-              className="text-display text-[var(--text-primary)]"
-              initial={{ clipPath: 'inset(0 0 100% 0)' }}
-              animate={inView ? { clipPath: 'inset(0 0 0% 0)' } : {}}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            >
-              UJJWAL
-            </motion.h1>
-            <motion.h1 
-              className="text-display gradient-text"
-              initial={{ clipPath: 'inset(0 0 100% 0)' }}
-              animate={inView ? { clipPath: 'inset(0 0 0% 0)' } : {}}
-              transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            >
-              PRAJAPATI
-            </motion.h1>
-          </div>
-
-          {/* C. SUBHEADING & POSITIONING */}
+          {/* Large Personal Intro Headline */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="space-y-3 mb-8 max-w-[560px]"
-          >
-            <p className="font-body font-[500] text-[clamp(1.05rem,2vw,1.25rem)] text-[var(--text-primary)] leading-snug">
-              Software Engineer & Frontend Developer building scalable, interactive web applications.
-            </p>
-            <p className="font-body font-[300] text-[clamp(0.9rem,1.6vw,1rem)] text-[var(--text-secondary)] leading-relaxed">
-              Specialized in React, Next.js, and TypeScript with real-world experience building interactive web applications and SaaS frontends. Backed by strong problem-solving fundamentals with 900+ LeetCode problems solved across an 863-day active streak.
-            </p>
-          </motion.div>
-
-          {/* D. CTA ROW */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-5"
+          >
+            <h1 className="text-display text-[var(--text-highlight)] leading-[1.08] font-[800]">
+              Hi, I&apos;m <span className="text-[var(--accent-secondary)]">Ujjwal Prajapati.</span>
+            </h1>
+            <p className="font-display font-[700] text-[clamp(1.4rem,2.4vw,2.1rem)] text-[var(--text-primary)] mt-2 tracking-tight leading-tight">
+              Building scalable, high-performance web products.
+            </p>
+          </motion.div>
+
+          {/* Narrative Paragraph */}
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="font-body font-[300] text-[clamp(1rem,1.3vw,1.125rem)] text-[var(--text-secondary)] leading-relaxed mb-8 max-w-[540px]"
+          >
+            Final-year Computer Science student at XIM University (CGPA 9.16) specializing in React, Next.js, and TypeScript. Backed by solid algorithmic problem-solving with 900+ LeetCode problems solved across an 863-day active streak.
+          </motion.p>
+
+          {/* Pill CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.45 }}
             className="flex flex-wrap items-center gap-4 mb-12"
           >
+            {/* Primary Filled Pill Button */}
             <a
               href="#projects"
-              data-cursor="pointer"
-              className="bg-[var(--accent-primary)] text-white font-body font-[500] py-3 px-8 rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_var(--accent-glow)] flex items-center gap-2 text-sm md:text-base"
+              className="bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-[#0B0D0E] font-body font-[600] py-3 px-7 rounded-full transition-all duration-200 hover:scale-[1.02] shadow-sm flex items-center gap-2 text-sm"
             >
-              View Projects <ArrowRight className="w-4 h-4" />
+              <span>View My Work</span>
+              <ArrowRight className="w-4 h-4" />
             </a>
+
+            {/* Secondary Outlined Pill Button */}
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              data-cursor="pointer"
-              className="border border-white/20 text-[var(--text-primary)] font-body font-[500] py-3 px-7 rounded-full transition-all duration-300 hover:bg-white/5 hover:border-white/40 flex items-center gap-2 text-sm md:text-base"
+              className="border border-[var(--border-subtle)] hover:border-[var(--border-hover)] bg-[var(--bg-card)] text-[var(--text-primary)] hover:text-[var(--text-highlight)] font-body font-[500] py-3 px-6 rounded-full transition-all duration-200 flex items-center gap-2 text-sm shadow-sm"
             >
-              <FileText className="w-4 h-4 text-[var(--accent-cyan)]" />
-              Resume
+              <Download className="w-4 h-4 text-[var(--accent-primary)]" />
+              <span>Download Resume</span>
             </a>
-            <div className="flex items-center gap-2 pl-1">
-              <a
-                href="https://github.com/darknight08zz"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub Profile"
-                data-cursor="pointer"
-                className="p-3 rounded-full border border-white/10 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-white/30 hover:bg-white/5 transition-all"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/ujjwal-prajapati-34b44b285/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn Profile"
-                data-cursor="pointer"
-                className="p-3 rounded-full border border-white/10 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-white/30 hover:bg-white/5 transition-all"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-            </div>
           </motion.div>
 
-          {/* E. STATS ROW */}
+          {/* 4 Stats Evidence Row */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 1.1 }}
-            className="grid grid-cols-2 sm:flex sm:items-center gap-6 sm:gap-8 md:gap-10"
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 pt-4 w-full border-t border-[var(--border-subtle)]"
           >
-            <Counter value={900} label="LeetCode Solved" suffix="+" />
-            <div className="hidden sm:block w-[1px] h-10 bg-white/10" />
-            <Counter value={863} label="Active Streak" suffix="d" />
-            <div className="hidden sm:block w-[1px] h-10 bg-white/10" />
-            <Counter value="9.16" label="CGPA (XIM)" />
-            <div className="hidden sm:block w-[1px] h-10 bg-white/10" />
-            <Counter value={10} label="Projects Built" suffix="+" />
+            {stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col">
+                <span className="font-display font-[700] text-2xl md:text-3xl text-[var(--text-highlight)] tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="font-body text-xs text-[var(--text-muted)] mt-1">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
           </motion.div>
         </motion.div>
 
-        {/* F. PROFILE IMAGE (Desktop Only) */}
+        {/* RIGHT COLUMN: Authentic Photo with 3D Depth, Frame & Cursive Script */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-          animate={inView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
-          transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden lg:block relative"
+          ref={visualRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{
+            rotateX,
+            rotateY,
+            transformStyle: "preserve-3d",
+          }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full sm:w-[380px] md:w-[430px] lg:w-[460px] aspect-[4/5] relative rounded-3xl p-3 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)] shadow-2xl group transition-colors duration-300"
         >
-          {/* Decorative Rings */}
-          <div className="absolute inset-[-20px] border border-white/5 rounded-full animate-[spin_20s_linear_infinite]" />
-          <div className="absolute inset-[-40px] border border-white/5 rounded-full animate-[spin_30s_linear_infinite_reverse]" />
-          
-          <div className="relative w-[400px] h-[400px] rounded-full overflow-hidden border-[8px] border-white/5 shadow-2xl">
+          {/* Main Photo Frame */}
+          <div 
+            className="w-full h-full relative rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-inner"
+            style={{ transform: "translateZ(20px)" }}
+          >
             <img
               src="/Ujjwal_Profile_photo.jpeg"
-              alt="Ujjwal Prajapati"
-              className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-1000 scale-110 hover:scale-100"
+              alt="Ujjwal Prajapati — Software Engineer & Frontend Developer"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
             />
-            {/* Glassmorphism gradient */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent-primary)]/20 to-transparent opacity-40 mix-blend-overlay" />
+
+            {/* Subtle Editorial Vignette Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/80 via-transparent to-transparent pointer-events-none" />
+
+            {/* Warm Ambient Flare */}
+            <div className="absolute top-0 right-0 w-44 h-44 bg-[radial-gradient(circle,rgba(215,185,138,0.2)_0%,transparent_70%)] pointer-events-none" />
           </div>
 
-          {/* Floating Badge */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-4 -right-4 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-3"
+          {/* Floating Availability Pill (Front layer) */}
+          <div 
+            className="absolute bottom-6 left-6 right-6 flex items-center justify-between px-4 py-2.5 rounded-xl bg-[var(--bg-card)]/90 backdrop-blur-md border border-[var(--border-subtle)] shadow-xl"
+            style={{ transform: "translateZ(40px)" }}
           >
-            <div className="w-10 h-10 rounded-full bg-[var(--accent-primary)]/10 flex items-center justify-center text-[var(--accent-cyan)]">
-              <Code2 className="w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse" />
+              <span className="text-[11px] font-mono text-[var(--text-primary)] font-medium">
+                Full-Time &amp; Internships
+              </span>
             </div>
-            <div>
-              <p className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider">Primary Stack</p>
-              <p className="text-xs font-display font-bold text-[var(--text-primary)]">React • Next.js • TS</p>
+            <span className="text-[10px] font-mono text-[var(--accent-secondary)]">
+              XIM &apos;27
+            </span>
+          </div>
+
+          {/* Elegant Script Overlay: Code Design Build Repeat */}
+          <div 
+            className="absolute -top-3 -right-3 pointer-events-none z-20 select-none hidden sm:block"
+            style={{ transform: "translateZ(50px)" }}
+          >
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border-hover)] shadow-lg">
+              <Sparkles className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
+              <span className="font-mono text-[10px] text-[var(--accent-secondary)] uppercase tracking-wider font-semibold">
+                Frontend & SDE
+              </span>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
 
-      {/* G. SCROLL INDICATOR */}
+      {/* Editorial Mouse Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.8, delay: 1.4 }}
-        className="hidden md:flex absolute bottom-8 left-[max(5vw,2rem)] items-center gap-4"
+        transition={{ duration: 0.6, delay: 0.9 }}
+        className="w-full flex justify-center mt-10 lg:mt-6"
       >
-        <div className="relative flex flex-col items-center">
-          <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest rotate-[-90deg] translate-x-[-20px] mb-4">
-            scroll
-          </span>
-          <div className="w-[1px] h-[60px] bg-white/20 relative overflow-hidden">
-            <motion.div
-              animate={{ y: [0, 60] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="absolute top-0 left-[-1.5px] w-[4px] h-[4px] bg-[var(--accent-primary)] rounded-full shadow-[0_0_8px_var(--accent-primary)]"
+        <a 
+          href="#projects" 
+          aria-label="Scroll to projects"
+          className="flex flex-col items-center gap-2 group cursor-pointer"
+        >
+          <div className="w-5 h-8 rounded-full border border-[var(--border-subtle)] group-hover:border-[var(--accent-primary)]/60 flex items-start justify-center p-1 transition-colors">
+            <motion.div 
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1 h-2 rounded-full bg-[var(--accent-primary)]"
             />
           </div>
-        </div>
+          <span className="font-mono text-[10px] text-[var(--text-muted)] group-hover:text-[var(--text-secondary)] uppercase tracking-wider transition-colors">
+            Scroll to explore
+          </span>
+        </a>
       </motion.div>
-
     </section>
   );
 }
