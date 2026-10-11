@@ -145,6 +145,7 @@ The visual language is **editorial, minimal, technical, cinematic, and sophistic
 8. **Professional Engineering Portrait Frame & React Bits TargetCursor Architecture**:
    - Replaced experimental arch shape in [`Hero.tsx`](src/components/sections/Hero.tsx) with a high-craft **Professional Engineering Bezel**: restrained `rounded-2xl` outer container (`aspect-[3/3.9]`), inner `rounded-xl` photo frame, hairline precision halo (`-inset-2 border-[var(--border-subtle)]`), minimal architectural corner alignment marks, and an integrated solid bottom status bar (`Full-Time & Internships · XIM '27`).
    - Integrated `@react-bits/TargetCursor-JS-CSS` via [`TargetCursor.tsx`](src/components/ui/TargetCursor.tsx) and [`TargetCursor.css`](src/components/ui/TargetCursor.css) mounted through [`CustomCursor.tsx`](src/components/ui/CustomCursor.tsx): rotating precision target brackets (`spinDuration: 2s`, `size: 36px`, `cornerSize: 12px`, `thickness: 3px`) that smoothly close into a circular reticle icon when idle/not targeting anything, lock onto interactive targets (`a, button, input, .cursor-target`), snap to target radius with spring physics (`matchRadius: true`, `padding: 6px`), support click squeeze effects, dynamic color mixing, and contextual HUD labels (`data-cursor-label`).
-
-
-
+9. **Web3Forms Direct Background Email Delivery**:
+   - Integrated Web3Forms API using the exact environment variable name `WEB3FORMS_ACCESS_KEY` defined in `.env.local`.
+   - Exposed `WEB3FORMS_ACCESS_KEY` to client components via the `env` config in [`next.config.mjs`](next.config.mjs).
+   - Direct background browser submission to `https://api.web3forms.com/submit` in [`Contact.tsx`](src/components/sections/Contact.tsx) with seamless interactive states: `loading` (spinner), `success` (green checkmark + inline confirmation), and `error` fallback.

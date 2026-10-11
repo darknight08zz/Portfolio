@@ -2,20 +2,68 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Code, Mail, Check, MapPin, Briefcase } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Code, Mail, Check, MapPin, Briefcase, Loader2, AlertCircle } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 
 export function Contact() {
   const { ref, inView } = useReveal();
   const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
-    window.location.href = `mailto:prajapatiu0802@gmail.com?subject=Contact from Portfolio&body=Hello Ujjwal, my email is ${encodeURIComponent(email)}`;
-    setTimeout(() => setSubmitted(false), 4000);
+    if (!email || status === 'loading') return;
+
+    setStatus('loading');
+    setMessage('');
+
+    try {
+      const accessKey =
+        process.env.WEB3FORMS_ACCESS_KEY ||
+        '56253944-d975-41b8-9a44-6b0479653532';
+
+      const formData = new FormData();
+      formData.append('access_key', accessKey);
+      formData.append('email', email);
+      formData.append('subject', `Portfolio Contact from ${email}`);
+      formData.append(
+        'message',
+        `Hello Ujjwal,\n\nA visitor has reached out via your portfolio contact form:\nEmail: ${email}\n\nYou can reply directly to this email to connect with them.`
+      );
+      formData.append('from_name', 'Portfolio Contact Form');
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        setMessage("Message sent! I'll get back to you shortly.");
+        setEmail('');
+        setTimeout(() => {
+          setStatus('idle');
+          setMessage('');
+        }, 5000);
+      } else {
+        setStatus('error');
+        setMessage(data.message || 'Something went wrong. Please try again.');
+        setTimeout(() => {
+          setStatus('idle');
+          setMessage('');
+        }, 5000);
+      }
+    } catch {
+      setStatus('error');
+      setMessage('Failed to send. Please email prajapatiu0802@gmail.com directly.');
+      setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 5000);
+    }
   };
 
   const navLinks = [
@@ -81,30 +129,55 @@ export function Contact() {
               transition={{ delay: 0.3 }}
               className="flex flex-wrap items-center gap-4"
             >
-              {/* Email Pill Input */}
-              <form 
-                onSubmit={handleSubmit}
-                className="relative flex items-center bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--accent-grayscale-teal)] focus-within:border-[var(--accent-grayscale-teal)] rounded-full p-1.5 shadow-sm transition-all duration-200 w-full sm:w-[360px]"
-              >
-                <div className="pl-3.5 pr-2 text-[var(--text-muted)]">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <input
-                  type="email"
-                  required
-                  placeholder="your.email@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-transparent text-xs sm:text-sm font-body text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  aria-label="Submit email"
-                  className="w-9 h-9 rounded-full bg-[var(--accent-primary)] text-[var(--bg-primary)] flex items-center justify-center shrink-0 hover:bg-[var(--accent-grayscale-teal)] hover:text-white transition-colors"
+              {/* Email Pill Input Container with Inline Feedback */}
+              <div className="flex flex-col gap-2 w-full sm:w-[360px]">
+                <form 
+                  onSubmit={handleSubmit}
+                  className="relative flex items-center bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--accent-grayscale-teal)] focus-within:border-[var(--accent-grayscale-teal)] rounded-full p-1.5 shadow-sm transition-all duration-200 w-full"
                 >
-                  {submitted ? <Check className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
-                </button>
-              </form>
+                  <div className="pl-3.5 pr-2 text-[var(--text-muted)]">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="email"
+                    required
+                    disabled={status === 'loading'}
+                    placeholder="your.email@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-transparent text-xs sm:text-sm font-body text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none disabled:opacity-50"
+                  />
+                  <button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    aria-label="Submit email"
+                    data-cursor-label="Send"
+                    className="w-9 h-9 rounded-full bg-[var(--accent-primary)] text-[var(--bg-primary)] flex items-center justify-center shrink-0 hover:bg-[var(--accent-grayscale-teal)] hover:text-white transition-colors disabled:opacity-70"
+                  >
+                    {status === 'loading' ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : status === 'success' ? (
+                      <Check className="w-4 h-4 text-emerald-400" />
+                    ) : status === 'error' ? (
+                      <AlertCircle className="w-4 h-4 text-rose-400" />
+                    ) : (
+                      <ArrowRight className="w-4 h-4" />
+                    )}
+                  </button>
+                </form>
+
+                {message && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`text-[11px] font-mono tracking-wide px-3 ${
+                      status === 'success' ? 'text-emerald-400' : 'text-rose-400'
+                    }`}
+                  >
+                    {message}
+                  </motion.p>
+                )}
+              </div>
 
               {/* Social Channels */}
               <div className="flex items-center gap-2.5">

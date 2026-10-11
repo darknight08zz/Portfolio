@@ -13,6 +13,9 @@ const nextConfig = {
         contentDispositionType: 'attachment',
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
+    env: {
+        WEB3FORMS_ACCESS_KEY: process.env.WEB3FORMS_ACCESS_KEY,
+    },
 };
 
 export default nextConfig;
