@@ -95,6 +95,7 @@ const Navbar = () => {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            data-cursor-label="Resume"
             className="text-[11px] font-mono tracking-[0.14em] uppercase py-2 px-5 border border-[var(--border-subtle)] hover:border-[var(--accent-grayscale-teal)] bg-[var(--bg-card)] text-[var(--text-primary)] hover:text-[var(--text-highlight)] transition-all duration-200 rounded-full"
           >
             Resume

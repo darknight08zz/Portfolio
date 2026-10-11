@@ -131,14 +131,14 @@ export function Hero() {
             className="flex flex-wrap items-center gap-3 sm:gap-4 mb-7 sm:mb-9"
           >
             <Button asChild variant="pill" size="pill" className="gap-2 font-mono text-[11px] tracking-[0.15em] uppercase hover:bg-[var(--accent-grayscale-teal)] hover:text-white transition-all shadow-md">
-              <a href="#projects">
+              <a href="#projects" data-cursor-label="Projects">
                 <span>Explore Projects</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </Button>
 
             <Button asChild variant="pillOutline" size="pill" className="gap-2 font-mono text-[11px] tracking-[0.15em] uppercase hover:border-[var(--accent-grayscale-teal)] transition-all">
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" data-cursor-label="Resume">
                 <Download className="w-4 h-4 text-[var(--text-secondary)]" />
                 <span>Resume PDF</span>
               </a>
@@ -165,7 +165,7 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT COLUMN: Authentic Photo with Architectural Frame */}
+        {/* RIGHT COLUMN: Authentic Photo with Professional Engineering Bezel */}
         <motion.div
           ref={visualRef}
           onMouseMove={handleMouseMove}
@@ -178,46 +178,58 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[300px] sm:max-w-[340px] md:max-w-[370px] lg:max-w-[390px] xl:max-w-[410px] aspect-[4/5] relative rounded-3xl p-2.5 sm:p-3 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)] shadow-2xl group transition-colors duration-300 mx-auto lg:mx-0 mt-6 lg:mt-0"
+          className="w-full max-w-[290px] sm:max-w-[320px] md:max-w-[340px] lg:max-w-[365px] xl:max-w-[380px] aspect-[3/3.9] relative rounded-2xl p-2.5 sm:p-3 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)] shadow-2xl group transition-all duration-300 mx-auto lg:mx-0 mt-6 lg:mt-0"
         >
+          {/* Subtle Outer Hairline Precision Halo */}
+          <div 
+            className="absolute -inset-2 rounded-[20px] border border-[var(--border-subtle)] pointer-events-none opacity-60 group-hover:opacity-100 group-hover:border-[var(--border-hover)] transition-all duration-300" 
+            style={{ transform: "translateZ(-10px)" }}
+          />
+
+          {/* Minimal Precision Corner Ticks */}
+          <div className="absolute top-1 left-1 w-2 h-2 border-l border-t border-[var(--text-muted)]/40 pointer-events-none" />
+          <div className="absolute top-1 right-1 w-2 h-2 border-r border-t border-[var(--text-muted)]/40 pointer-events-none" />
+          <div className="absolute bottom-1 left-1 w-2 h-2 border-l border-b border-[var(--text-muted)]/40 pointer-events-none" />
+          <div className="absolute bottom-1 right-1 w-2 h-2 border-r border-b border-[var(--text-muted)]/40 pointer-events-none" />
+
           {/* Main Photo Frame */}
           <div 
-            className="w-full h-full relative rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-inner"
+            className="w-full h-full relative rounded-xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-inner"
             style={{ transform: "translateZ(20px)" }}
           >
             <img
               src="/Ujjwal_Profile_photo.jpeg"
               alt="Ujjwal Prajapati — Software Engineer & Frontend Developer"
-              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover object-[center_18%] group-hover:scale-105 transition-transform duration-700"
             />
 
-            {/* Subtle Vignette Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/80 via-transparent to-transparent pointer-events-none" />
+            {/* Subtle Vignette Overlay for Bottom Contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none" />
           </div>
 
-          {/* Floating Availability Pill (Front layer) */}
+          {/* Professional Status Bar (Bottom Integrated) */}
           <div 
-            className="absolute bottom-5 left-5 right-5 flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[var(--bg-card)]/95 backdrop-blur-md border border-[var(--border-subtle)] shadow-xl"
+            className="absolute bottom-3.5 left-3 right-3 sm:bottom-4 sm:left-3.5 sm:right-3.5 flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] shadow-xl"
             style={{ transform: "translateZ(40px)" }}
           >
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-grayscale-teal)]" />
               <span className="text-xs font-body text-[var(--text-primary)] font-medium">
                 Full-Time &amp; Internships
               </span>
             </div>
-            <span className="text-xs font-body text-[var(--text-muted)]">
+            <span className="text-xs font-mono text-[var(--text-muted)] tracking-wider">
               XIM &apos;27
             </span>
           </div>
 
           {/* Clean Micro Badge */}
           <div 
-            className="absolute -top-3 -right-3 pointer-events-none z-20 select-none hidden sm:block"
-            style={{ transform: "translateZ(50px)" }}
+            className="absolute -top-3 -right-2 pointer-events-none z-20 select-none hidden sm:block"
+            style={{ transform: "translateZ(45px)" }}
           >
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border-subtle)] shadow-lg">
-              <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--bg-card)] border border-[var(--border-subtle)] shadow-lg">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-grayscale-teal)]" />
               <span className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-wider font-semibold">
                 Frontend &amp; SDE
               </span>
