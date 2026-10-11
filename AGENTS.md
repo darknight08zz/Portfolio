@@ -1,5 +1,6 @@
 # AGENTS.md
 
+
 ## Project Instructions & Guidelines for AI Agents
 
 This file serves as the persistent context, architectural specification, and instruction guide for AI agents working on this portfolio codebase.
@@ -135,4 +136,12 @@ The visual language is **editorial, minimal, technical, cinematic, and sophistic
    - Preserved above-the-fold vertical rhythm on standard laptop screens (768px–900px height) and mobile viewports with tight vertical padding (`pt-24 lg:pt-24 pb-12 lg:pb-10`).
    - Stats row formatted with `whitespace-nowrap` so values like `800+ Days` remain on a single line with zero text truncation.
    - Touch guards (`window.matchMedia('(pointer: coarse)')`) active on 3D tilt tracking in `Hero.tsx` and `ProjectCard.tsx` to ensure frictionless mobile scrolling.
+7. **StartBootstrap Grayscale Architectural Upgrade**:
+   - **Atmospheric Visuals**: Integrated authentic Grayscale scenic landscape backdrops (`/bg-masthead.jpg`, `/bg-signup.jpg`) with deep vignette overlays in Hero and the About & Skills block.
+   - **Signature Alternating Projects Showcase**: Added Grayscale's iconic featured row with vertical slate-teal accent bar (`border-l-4 border-[var(--accent-grayscale-teal)]`) and 50/50 alternating split showcase rows for top systems (CrowdShield, NetSentinel, VTRACE) alongside full category tabs and 3-column project directory.
+   - **3-Card Grayscale Contact Architecture**: Integrated Grayscale's 3-card contact layout (Location & Campus, Direct Email, SDE Status) with bottom accent border indicators (`border-b-4 border-b-[var(--accent-grayscale-teal)]`) and center dividers above the horizon email pill and minimal footer.
+   - **Editorial Elevation**: Eliminated mechanical code-bracket tags (`[00] //`, `[01] //`, `[02] //`, etc.) across all sections in favor of clean, refined dot indicators and human-centric, high-impact engineering copy.
+   - **Elimination of Artificial Vibe-Coding/Terminal Gimmicks**: Replaced retro matrix-green monospace pills and macOS terminal mockups with sleek modern status indicators (subtle slate-teal ping) and a clean architectural Engineering Foundations & Credentials card.
+
+
 

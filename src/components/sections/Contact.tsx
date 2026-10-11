@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Twitter, Mail, Check } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Code, Mail, Check, MapPin, Briefcase } from 'lucide-react';
 import { useReveal } from '@/hooks/useReveal';
 
 export function Contact() {
@@ -48,12 +48,10 @@ export function Contact() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              className="flex items-center gap-2 mb-2"
+              className="flex items-center gap-2.5 mb-2"
             >
-              <span className="font-mono text-xs text-[var(--accent-primary)] tracking-[0.16em] uppercase">
-                05
-              </span>
-              <span className="font-mono text-xs text-[var(--text-secondary)] tracking-[0.16em] uppercase font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-grayscale-teal)]" />
+              <span className="font-mono text-xs text-[var(--accent-grayscale-teal)] tracking-[0.2em] uppercase font-semibold">
                 GET IN TOUCH
               </span>
             </motion.div>
@@ -86,7 +84,7 @@ export function Contact() {
               {/* Email Pill Input */}
               <form 
                 onSubmit={handleSubmit}
-                className="relative flex items-center bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-hover)] focus-within:border-[var(--border-hover)] rounded-full p-1.5 shadow-sm transition-all duration-200 w-full sm:w-[360px]"
+                className="relative flex items-center bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--accent-grayscale-teal)] focus-within:border-[var(--accent-grayscale-teal)] rounded-full p-1.5 shadow-sm transition-all duration-200 w-full sm:w-[360px]"
               >
                 <div className="pl-3.5 pr-2 text-[var(--text-muted)]">
                   <Mail className="w-4 h-4" />
@@ -102,7 +100,7 @@ export function Contact() {
                 <button
                   type="submit"
                   aria-label="Submit email"
-                  className="w-9 h-9 rounded-full bg-[var(--accent-primary)] text-[var(--bg-primary)] flex items-center justify-center shrink-0 hover:bg-white transition-colors"
+                  className="w-9 h-9 rounded-full bg-[var(--accent-primary)] text-[var(--bg-primary)] flex items-center justify-center shrink-0 hover:bg-[var(--accent-grayscale-teal)] hover:text-white transition-colors"
                 >
                   {submitted ? <Check className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
                 </button>
@@ -115,7 +113,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub Profile"
-                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--border-hover)] flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent-grayscale-teal)] hover:-translate-y-0.5 flex items-center justify-center transition-all duration-200"
                 >
                   <Github className="w-4 h-4" />
                 </a>
@@ -124,18 +122,18 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn Profile"
-                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--border-hover)] flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent-grayscale-teal)] hover:-translate-y-0.5 flex items-center justify-center transition-all duration-200"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://twitter.com"
+                  href="https://leetcode.com/u/TheUjjwal/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Twitter / X Profile"
-                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--border-hover)] flex items-center justify-center transition-colors"
+                  aria-label="LeetCode Profile"
+                  className="w-10 h-10 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-white hover:border-[var(--accent-grayscale-teal)] hover:-translate-y-0.5 flex items-center justify-center transition-all duration-200"
                 >
-                  <Twitter className="w-4 h-4" />
+                  <Code className="w-4 h-4" />
                 </a>
               </div>
             </motion.div>
@@ -155,6 +153,61 @@ export function Contact() {
             </motion.div>
           </div>
         </div>
+
+        {/* Grayscale 3-Card Architecture Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.35, duration: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-16"
+        >
+          {/* Card 1: Location */}
+          <div className="bg-[var(--bg-card)] border border-[var(--border-subtle)] border-b-4 border-b-[var(--accent-grayscale-teal)] rounded-2xl p-6 text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div className="w-10 h-10 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center mb-3 text-[var(--accent-grayscale-teal)]">
+              <MapPin className="w-4 h-4" />
+            </div>
+            <h4 className="font-mono text-xs text-[var(--text-highlight)] uppercase tracking-[0.18em] font-semibold">
+              Location
+            </h4>
+            <div className="w-10 h-0.5 bg-[var(--accent-grayscale-teal)] my-3 opacity-80" />
+            <p className="font-body text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+              Bhubaneswar, India <br />
+              <span className="font-mono text-[11px] text-[var(--text-muted)]">XIM University </span>
+            </p>
+          </div>
+
+          {/* Card 2: Direct Email */}
+          <div className="bg-[var(--bg-card)] border border-[var(--border-subtle)] border-b-4 border-b-[var(--accent-grayscale-teal)] rounded-2xl p-6 text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div className="w-10 h-10 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center mb-3 text-[var(--accent-grayscale-teal)]">
+              <Mail className="w-4 h-4" />
+            </div>
+            <h4 className="font-mono text-xs text-[var(--text-highlight)] uppercase tracking-[0.18em] font-semibold">
+              Direct Contact
+            </h4>
+            <div className="w-10 h-0.5 bg-[var(--accent-grayscale-teal)] my-3 opacity-80" />
+            <a 
+              href="mailto:prajapatiu0802@gmail.com"
+              className="font-mono text-xs sm:text-sm text-[var(--text-primary)] hover:text-[var(--accent-grayscale-teal)] transition-colors"
+            >
+              prajapatiu0802@gmail.com
+            </a>
+          </div>
+
+          {/* Card 3: Opportunities */}
+          <div className="bg-[var(--bg-card)] border border-[var(--border-subtle)] border-b-4 border-b-[var(--accent-grayscale-teal)] rounded-2xl p-6 text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div className="w-10 h-10 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center mb-3 text-[var(--accent-grayscale-teal)]">
+              <Briefcase className="w-4 h-4" />
+            </div>
+            <h4 className="font-mono text-xs text-[var(--text-highlight)] uppercase tracking-[0.18em] font-semibold">
+              Status
+            </h4>
+            <div className="w-10 h-0.5 bg-[var(--accent-grayscale-teal)] my-3 opacity-80" />
+            <p className="font-body text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+              Open to SDE &amp; Frontend Roles <br />
+              <span className="text-xs font-body text-[var(--accent-grayscale-teal)] font-medium">Full-Time &amp; Select Internships</span>
+            </p>
+          </div>
+        </motion.div>
 
         {/* Minimal Bottom Editorial Footer */}
         <div className="pt-8 border-t border-[var(--border-subtle)] flex flex-col md:flex-row items-center justify-between gap-6">

@@ -47,7 +47,7 @@ const skillTiers: { number: string; title: string; items: TechItem[] }[] = [
       },
       {
         name: 'Testing',
-        icon: <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />,
+        icon: <CheckCircle2 className="w-3.5 h-3.5 text-zinc-300" />,
       },
     ],
   },
@@ -255,13 +255,11 @@ export function Skills() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="flex items-center gap-2 mb-3"
+          className="flex items-center gap-2.5 mb-3"
         >
-          <span className="font-mono text-xs text-[var(--text-muted)] tracking-[0.16em] uppercase">
-            [03] //
-          </span>
-          <span className="font-mono text-xs text-[var(--text-secondary)] tracking-[0.16em] uppercase font-medium">
-            SKILLS &amp; CAPABILITIES
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-grayscale-teal)]" />
+          <span className="font-mono text-xs text-[var(--accent-grayscale-teal)] tracking-[0.2em] uppercase font-semibold">
+            EXPERTISE &amp; TECH STACK
           </span>
         </motion.div>
 
@@ -271,7 +269,7 @@ export function Skills() {
           transition={{ delay: 0.1 }}
           className="text-heading text-[var(--text-highlight)] font-[800] leading-tight mb-6 tracking-tight"
         >
-          Technical competencies.
+          Technologies I work with.
         </motion.h2>
       </div>
 
@@ -287,9 +285,8 @@ export function Skills() {
           >
             {/* Category Pill Tag */}
             <div className="w-full sm:w-36 shrink-0 pt-1">
-              <span className="text-[11px] font-mono text-[var(--text-secondary)] uppercase tracking-wider font-medium flex items-center gap-1.5">
-                <span className="text-[10px] text-[var(--text-muted)] font-bold">{tier.number}</span>
-                <span className="text-[var(--border-subtle)]">//</span>
+              <span className="text-[11px] font-mono text-[var(--text-highlight)] uppercase tracking-wider font-semibold flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-grayscale-teal)] shrink-0" />
                 <span>{tier.title}</span>
               </span>
             </div>

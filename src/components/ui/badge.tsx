@@ -18,7 +18,7 @@ const badgeVariants = cva(
         tag:
           'font-mono text-[11px] rounded-full px-3 py-1 border-[var(--border-subtle)] bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:border-[var(--border-hover)] transition-colors',
         active:
-          'font-mono text-[10px] uppercase tracking-wider rounded-full px-2.5 py-0.5 border border-emerald-800/40 bg-emerald-950/40 text-emerald-400',
+          'text-[11px] font-body font-medium rounded-full px-2.5 py-0.5 border border-[var(--grayscale-accent-border)] bg-[var(--bg-secondary)] text-[var(--text-highlight)] shadow-sm',
       },
     },
     defaultVariants: {

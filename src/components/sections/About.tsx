@@ -19,11 +19,9 @@ export function About() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="flex items-center gap-2 mb-3"
         >
-          <span className="font-mono text-xs text-[var(--text-muted)] tracking-[0.16em] uppercase">
-            [02] //
-          </span>
-          <span className="font-mono text-xs text-[var(--text-secondary)] tracking-[0.16em] uppercase font-medium">
-            ENGINEERING PROFILE
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-grayscale-teal)]" />
+          <span className="font-mono text-xs text-[var(--accent-grayscale-teal)] tracking-[0.2em] uppercase font-semibold">
+            ABOUT ME
           </span>
         </motion.div>
 
@@ -33,8 +31,8 @@ export function About() {
           transition={{ delay: 0.1 }}
           className="text-heading text-[var(--text-highlight)] font-[800] leading-tight mb-4 tracking-tight"
         >
-          Principled engineering, <br />
-          <span className="text-[var(--text-secondary)]">from algorithms to UI.</span>
+          Crafting digital products with <br />
+          <span className="text-[var(--text-secondary)]">precision, scale &amp; purpose.</span>
         </motion.h2>
 
         <motion.p
@@ -43,7 +41,7 @@ export function About() {
           transition={{ delay: 0.2 }}
           className="font-body font-[300] text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-6 max-w-xl"
         >
-          I approach frontend and software development with an emphasis on deterministic state, render efficiency, and strict type safety. Rather than treating frontend as mere visuals, I bridge rigorous algorithmic problem-solving with high-caliber user experience.
+          I bridge deep algorithmic discipline with modern frontend craftsmanship. From architecting distributed systems and real-time monitoring tools to polishing fluid interfaces with React and TypeScript, I build software designed to perform reliably at scale while feeling effortlessly intuitive.
         </motion.p>
 
         {/* Action Button */}
@@ -53,7 +51,7 @@ export function About() {
           transition={{ delay: 0.3 }}
           className="mb-8"
         >
-          <Button asChild variant="pillOutline" size="pill" className="gap-2">
+          <Button asChild variant="pillOutline" size="pill" className="gap-2 font-mono text-[11px] tracking-[0.14em] uppercase hover:border-[var(--accent-grayscale-teal)]">
             <a href="#experience">
               <span>View Background &amp; Milestones</span>
               <ArrowRight className="w-3.5 h-3.5 text-[var(--text-muted)]" />
@@ -62,66 +60,90 @@ export function About() {
         </motion.div>
       </div>
 
-      {/* Handcrafted Engineering Spec Artifact (Replaces generic stock photo) */}
+      {/* Architectural Engineering Credentials & Foundations Card */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.35, duration: 0.6 }}
-        className="w-full rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-xl overflow-hidden"
+        className="w-full rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-xl p-5 sm:p-6 flex flex-col justify-between"
       >
-        {/* Terminal Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-[var(--bg-secondary)] border-b border-[var(--border-subtle)]">
+        {/* Card Header */}
+        <div className="flex items-center justify-between pb-4 border-b border-[var(--border-subtle)] mb-4">
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
-            <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
-            <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
-            <span className="font-mono text-[11px] text-[var(--text-muted)] ml-2">
-              engineer_spec.ts
-            </span>
+            <span className="w-2 h-2 rounded-full bg-[var(--accent-grayscale-teal)]" />
+            <h3 className="font-display font-[700] text-xs sm:text-sm tracking-wide text-[var(--text-highlight)] uppercase">
+              Engineering Credentials &amp; Rigor
+            </h3>
           </div>
-          <Badge variant="active">ACTIVE VERIFIED</Badge>
+          <span className="text-[11px] font-mono text-[var(--text-muted)] tracking-wider">
+            XIM &apos;27
+          </span>
         </div>
 
-        {/* Spec Content */}
-        <div className="p-4 sm:p-5 font-mono text-xs space-y-3.5">
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1.5 sm:gap-4 pb-3 border-b border-[var(--border-subtle)]">
-            <div className="flex items-center gap-2 text-[var(--text-muted)] shrink-0">
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>ACADEMICS</span>
+        {/* Credential Rows */}
+        <div className="space-y-3">
+          {/* Row 1: Academics */}
+          <div className="flex items-center justify-between gap-3 p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-subtle)] transition-colors hover:border-[var(--border-hover)]">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-[var(--bg-card)] flex items-center justify-center text-[var(--accent-grayscale-teal)] shrink-0 border border-[var(--border-subtle)]">
+                <BookOpen className="w-4 h-4" />
+              </div>
+              <div className="truncate">
+                <p className="text-[11px] font-body text-[var(--text-muted)] font-medium">Academics &amp; Merit</p>
+                <p className="text-xs sm:text-sm font-semibold text-[var(--text-highlight)] truncate">B.Tech Computer Science (CGPA 9.16)</p>
+              </div>
             </div>
-            <div className="sm:text-right text-[var(--text-primary)]">
-              <span className="font-semibold">XIM University</span> (CGPA 9.16 · Merit Scholar)
-            </div>
+            <span className="text-[11px] font-body font-medium text-[var(--accent-grayscale-teal)] bg-[var(--bg-card)] px-2.5 py-1 rounded-md border border-[var(--border-subtle)] shrink-0">
+              Merit Scholar
+            </span>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1.5 sm:gap-4 pb-3 border-b border-[var(--border-subtle)]">
-            <div className="flex items-center gap-2 text-[var(--text-muted)] shrink-0">
-              <Activity className="w-3.5 h-3.5" />
-              <span>DSA RIGOR</span>
+          {/* Row 2: DSA */}
+          <div className="flex items-center justify-between gap-3 p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-subtle)] transition-colors hover:border-[var(--border-hover)]">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-[var(--bg-card)] flex items-center justify-center text-[var(--accent-grayscale-teal)] shrink-0 border border-[var(--border-subtle)]">
+                <Activity className="w-4 h-4" />
+              </div>
+              <div className="truncate">
+                <p className="text-[11px] font-body text-[var(--text-muted)] font-medium">Algorithmic Practice</p>
+                <p className="text-xs sm:text-sm font-semibold text-[var(--text-highlight)] truncate">LeetCode Problem Solving</p>
+              </div>
             </div>
-            <div className="sm:text-right text-[var(--text-primary)]">
-              <span className="font-semibold">900+ LeetCode</span> (800+ Days Active Daily Streak)
-            </div>
+            <span className="text-[11px] font-body font-medium text-[var(--accent-grayscale-teal)] bg-[var(--bg-card)] px-2.5 py-1 rounded-md border border-[var(--border-subtle)] shrink-0">
+              900+ · 800+ Streak
+            </span>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1.5 sm:gap-4 pb-3 border-b border-[var(--border-subtle)]">
-            <div className="flex items-center gap-2 text-[var(--text-muted)] shrink-0">
-              <Award className="w-3.5 h-3.5" />
-              <span>COMMUNITY</span>
+          {/* Row 3: Leadership */}
+          <div className="flex items-center justify-between gap-3 p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-subtle)] transition-colors hover:border-[var(--border-hover)]">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-[var(--bg-card)] flex items-center justify-center text-[var(--accent-grayscale-teal)] shrink-0 border border-[var(--border-subtle)]">
+                <Award className="w-4 h-4" />
+              </div>
+              <div className="truncate">
+                <p className="text-[11px] font-body text-[var(--text-muted)] font-medium">Leadership</p>
+                <p className="text-xs sm:text-sm font-semibold text-[var(--text-highlight)] truncate">IEEE CS Student Branch</p>
+              </div>
             </div>
-            <div className="sm:text-right text-[var(--text-primary)]">
-              IEEE XIM CS Student Branch (Treasurer &amp; Webmaster)
-            </div>
+            <span className="text-[11px] font-body text-[var(--text-secondary)] bg-[var(--bg-card)] px-2.5 py-1 rounded-md border border-[var(--border-subtle)] shrink-0">
+              Treasurer &amp; Webmaster
+            </span>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1.5 sm:gap-4 pt-1">
-            <div className="flex items-center gap-2 text-[var(--text-muted)] shrink-0">
-              <Terminal className="w-3.5 h-3.5" />
-              <span>CORE SPECIALTY</span>
+          {/* Row 4: Core Specialty */}
+          <div className="flex items-center justify-between gap-3 p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-subtle)] transition-colors hover:border-[var(--border-hover)]">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-8 h-8 rounded-lg bg-[var(--bg-card)] flex items-center justify-center text-[var(--accent-grayscale-teal)] shrink-0 border border-[var(--border-subtle)]">
+                <Terminal className="w-4 h-4" />
+              </div>
+              <div className="truncate">
+                <p className="text-[11px] font-body text-[var(--text-muted)] font-medium">Primary Focus</p>
+                <p className="text-xs sm:text-sm font-semibold text-[var(--text-highlight)] truncate">Frontend Systems &amp; Distributed Web</p>
+              </div>
             </div>
-            <div className="sm:text-right text-[var(--text-secondary)]">
-              React 19 · Next.js · TypeScript · Systems
-            </div>
+            <span className="text-[11px] font-body text-[var(--text-secondary)] bg-[var(--bg-card)] px-2.5 py-1 rounded-md border border-[var(--border-subtle)] shrink-0">
+              React · Next.js · TS
+            </span>
           </div>
         </div>
       </motion.div>

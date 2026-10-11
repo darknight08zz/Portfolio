@@ -57,29 +57,29 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto h-full px-6 md:px-10 flex items-center justify-between">
         {/* Brand / Logo */}
         <Link href="#home" className="group flex items-center gap-2">
-          <span className="bebas-neue-regular text-xl sm:text-2xl md:text-3xl tracking-[0.06em] text-[var(--text-highlight)] group-hover:text-[var(--accent-secondary)] transition-colors uppercase whitespace-nowrap">
+          <span className="bebas-neue-regular text-xl sm:text-2xl md:text-3xl tracking-[0.16em] text-[var(--text-highlight)] group-hover:text-[var(--accent-grayscale-teal)] transition-colors uppercase whitespace-nowrap">
             Ujjwal Prajapati
           </span>
         </Link>
 
         {/* Desktop Nav Links in Editorial Pill */}
-        <nav className="hidden lg:flex items-center gap-1 bg-[var(--bg-secondary)]/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-[var(--border-subtle)]">
+        <nav className="hidden lg:flex items-center gap-1 bg-[var(--bg-secondary)]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[var(--border-subtle)]">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.replace('#', '');
             return (
               <a
                 key={link.name}
                 href={link.href}
-                className={`relative px-4 py-1.5 rounded-full text-xs font-body font-medium transition-colors duration-200 ${
+                className={`relative px-4 py-1.5 rounded-full text-[11px] font-mono tracking-[0.14em] uppercase transition-colors duration-200 ${
                   isActive
-                    ? 'text-[var(--text-highlight)]'
-                    : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)]'
+                    ? 'text-[var(--text-highlight)] font-semibold'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)] font-normal'
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeNavPill"
-                    className="absolute inset-0 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-full shadow-sm"
+                    className="absolute inset-0 bg-[var(--bg-card)] border border-[var(--grayscale-accent-border)] rounded-full shadow-sm"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -95,7 +95,7 @@ const Navbar = () => {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-body font-medium py-2 px-5 border border-[var(--border-subtle)] hover:border-[var(--accent-primary)]/50 bg-[var(--bg-card)] text-[var(--text-primary)] hover:text-[var(--accent-secondary)] transition-all duration-200 rounded-full"
+            className="text-[11px] font-mono tracking-[0.14em] uppercase py-2 px-5 border border-[var(--border-subtle)] hover:border-[var(--accent-grayscale-teal)] bg-[var(--bg-card)] text-[var(--text-primary)] hover:text-[var(--text-highlight)] transition-all duration-200 rounded-full"
           >
             Resume
           </a>

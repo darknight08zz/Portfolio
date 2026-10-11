@@ -13,9 +13,9 @@ const journeyItems = [
     subtitle: 'PixScript Technologies',
     date: 'May 2026 – Jun 2026',
     bullets: [
-      'Optimized API integrations and global state management.',
-      'Improved performance and fixed UI/UX issues.',
-      'Collaborated in agile sprints using Git/GitHub.',
+      'Architected high-throughput API communication layers and unified application state across distributed modules.',
+      'Optimized core rendering pipelines, eliminating layout shifts and accelerating page interaction times.',
+      'Collaborated in rapid agile engineering cycles with Git workflows, code reviews, and automated testing.',
     ],
     link: {
       url: '/PixScripti_Ujjwal_Internship_Completion_Certificate.pdf',
@@ -28,9 +28,9 @@ const journeyItems = [
     subtitle: 'Independent Engineering',
     date: 'Jan 2024 – Present',
     bullets: [
-      'Building modern web applications for clients worldwide.',
-      'Working with Next.js, React, and modern tools.',
-      'Focused on performance and user experience.',
+      'Engineered custom, production-grade web applications with Next.js, React, and TypeScript for diverse clients.',
+      'Crafted design-first, accessible component systems with responsive fluid typography and micro-interactions.',
+      'Managed full project lifecycles from architecture design and state models to production deployment.',
     ],
   },
   {
@@ -39,8 +39,8 @@ const journeyItems = [
     subtitle: 'XIM University, Bhubaneswar',
     date: '2023 – 2027',
     bullets: [
-      'Current CGPA: 9.16 (Merit Scholarship Recipient).',
-      'Actively involved in IEEE XIM CS Student Branch as Webmaster & Treasurer.',
+      'Current CGPA: 9.16 (Four-year Academic Merit Scholarship recipient for top academic standing).',
+      'Elected Webmaster & Treasurer of IEEE XIM Computer Society Student Branch, leading technical events.',
     ],
   },
 ];
@@ -57,13 +57,11 @@ export function Experience() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="flex items-center gap-2 mb-3"
+            className="flex items-center gap-2.5 mb-3"
           >
-            <span className="font-mono text-xs text-[var(--text-muted)] tracking-[0.16em] uppercase">
-              [04] //
-            </span>
-            <span className="font-mono text-xs text-[var(--text-secondary)] tracking-[0.16em] uppercase font-medium">
-              BACKGROUND &amp; MILESTONES
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-grayscale-teal)]" />
+            <span className="font-mono text-xs text-[var(--accent-grayscale-teal)] tracking-[0.2em] uppercase font-semibold">
+              CAREER &amp; EDUCATION
             </span>
           </motion.div>
 
@@ -73,7 +71,7 @@ export function Experience() {
             transition={{ delay: 0.1 }}
             className="text-heading text-[var(--text-highlight)] font-[800] tracking-tight"
           >
-            Engineering journey &amp; education.
+            Experience &amp; milestones.
           </motion.h2>
         </div>
 

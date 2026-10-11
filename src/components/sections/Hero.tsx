@@ -47,17 +47,28 @@ export function Hero() {
       id="home" 
       className="relative min-h-[100svh] w-full overflow-hidden flex flex-col justify-center items-start bg-[var(--bg-primary)] px-5 sm:px-8 md:px-12 lg:px-16 pt-24 pb-12 sm:pt-28 sm:pb-14 lg:pt-24 lg:pb-10"
     >
-      {/* Minimal Architectural Backdrop Grid / Subtle Gradient */}
+      {/* Grayscale Masthead Background Image with Atmospheric Vignette */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <img
+          src="/bg-masthead.jpg"
+          alt="Atmospheric Masthead"
+          className="w-full h-full object-cover object-center opacity-30 dark:opacity-25 filter brightness-90 contrast-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/75 to-[var(--bg-primary)]" />
+        <div className="absolute inset-0 grayscale-vignette opacity-70" />
+      </div>
+      
+      {/* Minimal Architectural Backdrop Grid */}
       <div 
-        className="absolute inset-0 pointer-events-none z-0 opacity-20"
+        className="absolute inset-0 pointer-events-none z-0 opacity-15"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, var(--border-subtle) 1px, transparent 0)`,
           backgroundSize: '32px 32px',
         }}
       />
       <div 
-        className="absolute top-[10%] right-[15%] w-[480px] h-[480px] rounded-full pointer-events-none z-0 blur-[140px] opacity-10"
-        style={{ background: 'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)' }}
+        className="absolute top-[12%] right-[12%] w-[520px] h-[520px] rounded-full pointer-events-none z-0 blur-[150px] opacity-15"
+        style={{ background: 'radial-gradient(circle, var(--accent-grayscale-teal) 0%, transparent 70%)' }}
       />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 my-auto">
@@ -69,30 +80,32 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-start text-left w-full lg:max-w-[640px]"
         >
-          {/* Eyebrow Label: Role & Availability Status */}
+          {/* Availability Status Indicator */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-4 sm:mb-5"
           >
-            <span className="font-mono text-[10px] sm:text-[11px] md:text-xs text-[var(--text-muted)] tracking-[0.16em] uppercase font-medium">
-              [00] // SOFTWARE &amp; FRONTEND ENGINEER
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border-subtle)] shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+              <span className="text-xs font-body font-medium text-[var(--text-primary)]">
+                Available for Full-Time Roles &amp; Internships
+              </span>
+            </div>
+            <span className="text-xs font-body text-[var(--text-muted)] hidden sm:inline">
+              · Software Engineer &amp; Frontend
             </span>
-            <Badge variant="active" className="gap-1.5 py-0.5 px-2.5 text-[10px] sm:text-[11px]">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>OPEN TO FULL-TIME &amp; INTERNSHIP OPPORTUNITIES</span>
-            </Badge>
           </motion.div>
 
-          {/* Large Personal Intro Headline */}
+          {/* Large Personal Intro Headline with Grayscale Signature Gradient */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="mb-4 sm:mb-5"
           >
-            <h1 className="bebas-neue-regular text-[var(--text-highlight)] text-[clamp(2.4rem,6.2vw,5.5rem)] leading-[0.95] tracking-[0.03em] uppercase sm:whitespace-nowrap">
+            <h1 className="bebas-neue-regular grayscale-title-gradient text-[clamp(2.5rem,6.4vw,5.6rem)] leading-[0.95] tracking-[0.08em] sm:tracking-[0.14em] uppercase sm:whitespace-nowrap">
               Ujjwal Prajapati
             </h1>
             <p className="font-display font-[700] text-[clamp(1.1rem,1.8vw,1.65rem)] text-[var(--text-primary)] mt-2 sm:mt-2.5 tracking-tight leading-snug">
@@ -110,21 +123,21 @@ export function Hero() {
             Final-year Computer Science student at XIM University (CGPA 9.16) crafting production web systems with React, Next.js, and TypeScript. Backed by disciplined algorithmic foundations—900+ LeetCode problems solved across an active 800+ days streak.
           </motion.p>
 
-          {/* shadcn Button CTAs */}
+          {/* Grayscale Styled Button CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.45 }}
             className="flex flex-wrap items-center gap-3 sm:gap-4 mb-7 sm:mb-9"
           >
-            <Button asChild variant="pill" size="pill" className="gap-2">
+            <Button asChild variant="pill" size="pill" className="gap-2 font-mono text-[11px] tracking-[0.15em] uppercase hover:bg-[var(--accent-grayscale-teal)] hover:text-white transition-all shadow-md">
               <a href="#projects">
                 <span>Explore Projects</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </Button>
 
-            <Button asChild variant="pillOutline" size="pill" className="gap-2">
+            <Button asChild variant="pillOutline" size="pill" className="gap-2 font-mono text-[11px] tracking-[0.15em] uppercase hover:border-[var(--accent-grayscale-teal)] transition-all">
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 <Download className="w-4 h-4 text-[var(--text-secondary)]" />
                 <span>Resume PDF</span>
@@ -184,16 +197,16 @@ export function Hero() {
 
           {/* Floating Availability Pill (Front layer) */}
           <div 
-            className="absolute bottom-5 left-5 right-5 flex items-center justify-between px-3.5 py-2 rounded-xl bg-[var(--bg-card)]/90 backdrop-blur-md border border-[var(--border-subtle)] shadow-xl"
+            className="absolute bottom-5 left-5 right-5 flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[var(--bg-card)]/95 backdrop-blur-md border border-[var(--border-subtle)] shadow-xl"
             style={{ transform: "translateZ(40px)" }}
           >
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10.5px] font-mono text-[var(--text-primary)] font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+              <span className="text-xs font-body text-[var(--text-primary)] font-medium">
                 Full-Time &amp; Internships
               </span>
             </div>
-            <span className="text-[10px] font-mono text-[var(--text-muted)] tracking-wider">
+            <span className="text-xs font-body text-[var(--text-muted)]">
               XIM &apos;27
             </span>
           </div>
@@ -204,7 +217,7 @@ export function Hero() {
             style={{ transform: "translateZ(50px)" }}
           >
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--bg-card)] border border-[var(--border-subtle)] shadow-lg">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
               <span className="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-wider font-semibold">
                 Frontend &amp; SDE
               </span>
@@ -225,14 +238,14 @@ export function Hero() {
           aria-label="Scroll to projects"
           className="flex flex-col items-center gap-2 group cursor-pointer"
         >
-          <div className="w-5 h-8 rounded-full border border-[var(--border-subtle)] group-hover:border-[var(--accent-primary)]/60 flex items-start justify-center p-1 transition-colors">
+          <div className="w-5 h-8 rounded-full border border-[var(--border-subtle)] group-hover:border-white/60 flex items-start justify-center p-1 transition-colors">
             <motion.div 
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1 h-2 rounded-full bg-[var(--accent-primary)]"
+              className="w-1 h-2 rounded-full bg-white"
             />
           </div>
-          <span className="font-mono text-[10px] text-[var(--text-muted)] group-hover:text-[var(--text-secondary)] uppercase tracking-wider transition-colors">
+          <span className="font-mono text-[10px] text-[var(--text-muted)] group-hover:text-[var(--text-highlight)] uppercase tracking-[0.16em] transition-colors">
             Scroll to explore
           </span>
         </a>

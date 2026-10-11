@@ -14,9 +14,19 @@ export default function Home() {
       {/* 01 / FEATURED PROJECTS */}
       <Projects />
 
-      {/* 02 / ABOUT ME & 03 / SKILLS (Editorial 2-Column Composition) */}
-      <section className="py-20 md:py-28 bg-[var(--bg-secondary)] border-t border-[var(--border-subtle)]">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+      {/* ABOUT ME & SKILLS (Editorial 2-Column Composition with Atmospheric Backdrop) */}
+      <section className="relative py-20 md:py-28 bg-[var(--bg-secondary)] border-t border-[var(--border-subtle)] overflow-hidden">
+        {/* Subtle Atmospheric Backdrop Visual */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-20 dark:opacity-15 filter contrast-125 brightness-75">
+          <img
+            src="/bg-signup.jpg"
+            alt="Atmospheric Backdrop"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-secondary)]/90 via-transparent to-[var(--bg-secondary)]" />
+        </div>
+
+        <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
             <About />
             <Skills />

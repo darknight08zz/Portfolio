@@ -103,7 +103,7 @@ export function ProjectCard({ project }: { project: Project }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`View ${project.title}`}
-          className="w-8 h-8 rounded-full border border-[var(--border-subtle)] group-hover:border-[var(--accent-primary)] group-hover:bg-[var(--accent-primary)] group-hover:text-[var(--bg-primary)] flex items-center justify-center text-[var(--text-secondary)] transition-all duration-200"
+          className="w-8 h-8 rounded-full border border-[var(--border-subtle)] group-hover:border-[var(--accent-grayscale-teal)] group-hover:bg-[var(--accent-grayscale-teal)] group-hover:text-white flex items-center justify-center text-[var(--text-secondary)] transition-all duration-200"
         >
           <ArrowUpRight className="w-4 h-4" />
         </a>

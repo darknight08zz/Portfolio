@@ -82,7 +82,7 @@ export const TimelineItem = ({
           <ul className="space-y-1.5 font-body font-[300] text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
             {bulletItems.map((bullet, idx) => (
               <li key={idx} className="flex items-start gap-2">
-                <span className="text-[var(--accent-primary)] mt-1.5 w-1 h-1 rounded-full bg-[var(--accent-primary)] shrink-0" />
+                <span className="mt-1.5 w-1 h-1 rounded-full bg-[var(--accent-grayscale-teal)] shrink-0" />
                 <span>{bullet}</span>
               </li>
             ))}
@@ -96,9 +96,9 @@ export const TimelineItem = ({
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--accent-secondary)] hover:text-[var(--accent-primary)] transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--accent-grayscale-teal)] transition-colors"
             >
-              <FileText className="w-3.5 h-3.5" />
+              <FileText className="w-3.5 h-3.5 text-[var(--accent-grayscale-teal)]" />
               <span>{link.label}</span>
               <span>↗</span>
             </a>
